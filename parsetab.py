@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'AND AS COMA COUNT DESIGUAL DISTINCT FROM GROUP_BY HAVING ID IGUAL IN INNER_JOIN LEFT_JOIN MAX MAYOR_IZQ MAY_IGUAL_IZQ MENOR_IZQ MEN_IGUAL_IZQ MIN NUMERO ON OR ORDER_BY PAREN_DER PAREN_IZQ PUNTO PUNTOCOMA SELECT WHEREquery : SELECT columnas FROM tablas\n             | SELECT columnas FROM tablas WHERE condicioncolumnas : columna\n                   | columna COMA columnacolumna : ID PUNTO ID\n               | ID PUNTO ID AS IDtablas : tabla\n              | tabla COMA tablatabla : ID AS ID\n             | ID IDcondicion : columnas IGUAL columnas'
+_lr_signature = 'AND AS ASC BY CADENA COMA COMILLA COUNT DESC DESIGUAL DISTINCT FROM GROUP HAVING IGUAL IN INNER IS JOIN LEFT MAX MAYOR MAYOR_IGUAL MENOR MENOR_IGUAL MIN NOT NULL NUMERO ON OR ORDER PAR_DER PAR_IZQ PUNTO SELECT WHERES : SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BYSELECT_ : SELECT CAMPOSCAMPOS : CAMPO COMA CAMPOS\n        | CAMPOCAMPO : CADENA PUNTO CADENA AS COMILLA CADENA COMILLA\n        | CADENA PUNTO CADENA\n        | FUNC_RESUMEN AS COMILLA CADENA COMILLAFUNC_RESUMEN : MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER\n        | MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER\n        | COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER\n        | COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DERFROM_ : FROM CADENA CADENA\n        | FROM CADENA AS CADENA\n        | FROM CADENA\n    ALIAS_T : AS CADENA\n        | CADENAJOIN_ : JOIN_INNER_LEFT JOIN_ \n        | JOIN_INNER_LEFT : INNER JOIN CADENA ALIAS_T ON COND_W\n        | LEFT JOIN CADENA ALIAS_T ON COND_WWHERE_ : WHERE COND_W\n        | COND_W : CONDICION\n        | CADENA PUNTO CADENA SUBCONSULTA\n        | COND_W AND COND_W\n        |  COND_W OR COND_W \n        | PAR_IZQ COND_W OR COND_W PAR_DERSUBCONSULTA : IN PAR_IZQ S PAR_DER\n        | NOT IN PAR_IZQ S PAR_DERVALOR : NUMERO\n        | COMILLA CADENA COMILLACONDICION : CADENA PUNTO CADENA SIGNO VALOR \n        | CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA\n        |  CADENA PUNTO CADENA NULLEABLENULLEABLE :  IS NOT NULL\n        |  IS NULLSIGNO : IGUAL \n        | MAYOR \n        | MENOR \n        | MAYOR_IGUAL \n        | MENOR_IGUAL\n        | DESIGUALGROUP_BY : GROUP BY CAMPOS_G HAVING_\n        | CAMPOS_G :  CADENA PUNTO CADENA COMA CAMPOS_G\n        | CADENA PUNTO CADENAHAVING_ : HAVING FUNC_RESUMEN SIGNO VALOR\n        | ORDER_BY : ORDER BY CAMPOS_O\n        | CAMPOS_O : CADENA PUNTO CADENA ORDEN COMA CAMPOS_O\n        | CADENA PUNTO CADENA ORDENORDEN : ASC\n        | DESC\n        | '
     
-_lr_action_items = {'SELECT':([0,],[2,]),'$end':([1,4,9,10,12,13,16,20,21,22,23,25,],[0,-3,-1,-7,-4,-5,-10,-2,-8,-9,-6,-11,]),'ID':([2,6,7,8,11,14,15,17,18,24,],[5,11,5,13,16,5,11,22,23,5,]),'FROM':([3,4,12,13,23,],[6,-3,-4,-5,-6,]),'IGUAL':([4,12,13,19,23,],[-3,-4,-5,24,-6,]),'COMA':([4,10,13,16,22,23,],[7,15,-5,-10,-9,-6,]),'PUNTO':([5,],[8,]),'WHERE':([9,10,16,21,22,],[14,-7,-10,-8,-9,]),'AS':([11,13,],[17,18,]),}
+_lr_action_items = {'SELECT':([0,114,125,],[3,3,3,]),'$end':([1,4,13,14,17,24,26,29,38,40,41,46,53,71,73,74,85,87,90,92,103,104,109,111,112,117,118,119,126,127,128,129,130,131,132,133,134,137,138,],[0,-18,-22,-18,-14,-44,-17,-12,-50,-21,-23,-13,-1,-48,-25,-26,-49,-43,-24,-34,-19,-20,-46,-32,-30,-36,-27,-55,-35,-52,-53,-54,-47,-45,-33,-31,-28,-29,-51,]),'FROM':([2,6,7,31,32,65,105,],[5,-2,-4,-3,-6,-7,-5,]),'CADENA':([3,5,17,18,19,21,22,23,25,27,28,30,33,37,43,44,45,49,50,51,55,56,57,58,62,64,69,70,76,77,79,89,91,95,96,97,98,99,100,107,113,121,122,136,],[8,17,29,8,32,34,35,36,42,44,45,46,48,52,42,60,60,66,67,68,72,42,42,75,78,80,84,86,42,42,42,109,110,-37,-38,-39,-40,-41,-42,119,123,72,132,86,]),'MIN':([3,18,88,],[10,10,10,]),'MAX':([3,18,88,],[11,11,11,]),'COUNT':([3,18,88,],[12,12,12,]),'WHERE':([4,13,14,17,26,29,41,46,73,74,90,92,103,104,111,112,117,118,126,132,133,134,137,],[-18,25,-18,-14,-17,-12,-23,-13,-25,-26,-24,-34,-19,-20,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'GROUP':([4,13,14,17,24,26,29,40,41,46,73,74,90,92,103,104,111,112,117,118,126,132,133,134,137,],[-18,-22,-18,-14,39,-17,-12,-21,-23,-13,-25,-26,-24,-34,-19,-20,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'ORDER':([4,13,14,17,24,26,29,38,40,41,46,71,73,74,87,90,92,103,104,109,111,112,117,118,126,130,131,132,133,134,137,],[-18,-22,-18,-14,-44,-17,-12,54,-21,-23,-13,-48,-25,-26,-43,-24,-34,-19,-20,-46,-32,-30,-36,-27,-35,-47,-45,-33,-31,-28,-29,]),'PAR_DER':([4,13,14,17,24,26,29,38,40,41,46,53,66,67,68,71,73,74,84,85,87,90,92,102,103,104,109,111,112,117,118,119,124,126,127,128,129,130,131,132,133,134,135,137,138,],[-18,-22,-18,-14,-44,-17,-12,-50,-21,-23,-13,-1,81,82,83,-48,-25,-26,106,-49,-43,-24,-34,118,-19,-20,-46,-32,-30,-36,-27,-55,134,-35,-52,-53,-54,-47,-45,-33,-31,-28,137,-29,-51,]),'INNER':([4,14,17,29,41,46,73,74,90,92,103,104,111,112,117,118,126,132,133,134,137,],[15,15,-14,-12,-23,-13,-25,-26,-24,-34,-19,-20,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'LEFT':([4,14,17,29,41,46,73,74,90,92,103,104,111,112,117,118,126,132,133,134,137,],[16,16,-14,-12,-23,-13,-25,-26,-24,-34,-19,-20,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'COMA':([7,32,65,105,109,119,127,128,129,],[18,-6,-7,-5,121,-55,136,-53,-54,]),'PUNTO':([8,34,35,36,42,52,72,86,110,],[19,49,50,51,58,69,89,107,122,]),'AS':([9,17,32,44,45,81,82,83,106,],[20,30,47,62,62,-8,-9,-10,-11,]),'PAR_IZQ':([10,11,12,25,43,56,57,76,77,79,93,115,],[21,22,23,43,43,43,43,43,43,43,114,125,]),'JOIN':([15,16,],[27,28,]),'COMILLA':([20,47,48,80,91,95,96,97,98,99,100,120,123,],[33,64,65,105,113,-37,-38,-39,-40,-41,-42,113,133,]),'DISTINCT':([23,],[37,]),'BY':([39,54,],[55,70,]),'AND':([40,41,59,73,74,90,92,102,103,104,111,112,117,118,126,132,133,134,137,],[56,-23,56,56,56,-24,-34,56,56,56,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'OR':([40,41,59,73,74,90,92,102,103,104,111,112,117,118,126,132,133,134,137,],[57,-23,76,57,57,-24,-34,57,57,57,-32,-30,-36,-27,-35,-33,-31,-28,-29,]),'ON':([60,61,63,78,],[-16,77,79,-15,]),'HAVING':([71,109,131,],[88,-46,-45,]),'IN':([75,94,],[93,115,]),'NOT':([75,101,],[94,116,]),'IGUAL':([75,81,82,83,106,108,],[95,-8,-9,-10,-11,95,]),'MAYOR':([75,81,82,83,106,108,],[96,-8,-9,-10,-11,96,]),'MENOR':([75,81,82,83,106,108,],[97,-8,-9,-10,-11,97,]),'MAYOR_IGUAL':([75,81,82,83,106,108,],[98,-8,-9,-10,-11,98,]),'MENOR_IGUAL':([75,81,82,83,106,108,],[99,-8,-9,-10,-11,99,]),'DESIGUAL':([75,81,82,83,106,108,],[100,-8,-9,-10,-11,100,]),'IS':([75,],[101,]),'NUMERO':([91,95,96,97,98,99,100,120,],[112,-37,-38,-39,-40,-41,-42,112,]),'NULL':([101,116,],[117,126,]),'ASC':([119,],[128,]),'DESC':([119,],[129,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'query':([0,],[1,]),'columnas':([2,14,24,],[3,19,25,]),'columna':([2,7,14,24,],[4,12,4,4,]),'tablas':([6,],[9,]),'tabla':([6,15,],[10,21,]),'condicion':([14,],[20,]),}
+_lr_goto_items = {'S':([0,114,125,],[1,124,135,]),'SELECT_':([0,114,125,],[2,2,2,]),'FROM_':([2,],[4,]),'CAMPOS':([3,18,],[6,31,]),'CAMPO':([3,18,],[7,7,]),'FUNC_RESUMEN':([3,18,88,],[9,9,108,]),'JOIN_':([4,14,],[13,26,]),'JOIN_INNER_LEFT':([4,14,],[14,14,]),'WHERE_':([13,],[24,]),'GROUP_BY':([24,],[38,]),'COND_W':([25,43,56,57,76,77,79,],[40,59,73,74,102,103,104,]),'CONDICION':([25,43,56,57,76,77,79,],[41,41,41,41,41,41,41,]),'ORDER_BY':([38,],[53,]),'ALIAS_T':([44,45,],[61,63,]),'CAMPOS_G':([55,121,],[71,131,]),'CAMPOS_O':([70,136,],[85,138,]),'HAVING_':([71,],[87,]),'SUBCONSULTA':([75,],[90,]),'SIGNO':([75,108,],[91,120,]),'NULLEABLE':([75,],[92,]),'VALOR':([91,120,],[111,130,]),'ORDEN':([119,],[127,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,16 +26,60 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> query","S'",1,None,None,None),
-  ('query -> SELECT columnas FROM tablas','query',4,'p_query','grupo02_m.py',97),
-  ('query -> SELECT columnas FROM tablas WHERE condicion','query',6,'p_query','grupo02_m.py',98),
-  ('columnas -> columna','columnas',1,'p_columnas','grupo02_m.py',102),
-  ('columnas -> columna COMA columna','columnas',3,'p_columnas','grupo02_m.py',103),
-  ('columna -> ID PUNTO ID','columna',3,'p_columna_con_tabla_antepuesta','grupo02_m.py',107),
-  ('columna -> ID PUNTO ID AS ID','columna',5,'p_columna_con_tabla_antepuesta','grupo02_m.py',108),
-  ('tablas -> tabla','tablas',1,'p_tablas','grupo02_m.py',134),
-  ('tablas -> tabla COMA tabla','tablas',3,'p_tablas','grupo02_m.py',135),
-  ('tabla -> ID AS ID','tabla',3,'p_tabla_con_alias','grupo02_m.py',139),
-  ('tabla -> ID ID','tabla',2,'p_tabla_con_alias','grupo02_m.py',140),
-  ('condicion -> columnas IGUAL columnas','condicion',3,'p_condicion','grupo02_m.py',161),
+  ("S' -> S","S'",1,None,None,None),
+  ('S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY','S',6,'p_S_consulta_completa','grupo03.py',88),
+  ('SELECT_ -> SELECT CAMPOS','SELECT_',2,'p_SELECT_','grupo03.py',92),
+  ('CAMPOS -> CAMPO COMA CAMPOS','CAMPOS',3,'p_CAMPOS','grupo03.py',96),
+  ('CAMPOS -> CAMPO','CAMPOS',1,'p_CAMPOS','grupo03.py',97),
+  ('CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA','CAMPO',7,'p_CAMPO','grupo03.py',101),
+  ('CAMPO -> CADENA PUNTO CADENA','CAMPO',3,'p_CAMPO','grupo03.py',102),
+  ('CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA','CAMPO',5,'p_CAMPO','grupo03.py',103),
+  ('FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER','FUNC_RESUMEN',6,'p_FUNC_RESUMEN','grupo03.py',121),
+  ('FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER','FUNC_RESUMEN',6,'p_FUNC_RESUMEN','grupo03.py',122),
+  ('FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER','FUNC_RESUMEN',6,'p_FUNC_RESUMEN','grupo03.py',123),
+  ('FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER','FUNC_RESUMEN',7,'p_FUNC_RESUMEN','grupo03.py',124),
+  ('FROM_ -> FROM CADENA CADENA','FROM_',3,'p_FROM_','grupo03.py',127),
+  ('FROM_ -> FROM CADENA AS CADENA','FROM_',4,'p_FROM_','grupo03.py',128),
+  ('FROM_ -> FROM CADENA','FROM_',2,'p_FROM_','grupo03.py',129),
+  ('ALIAS_T -> AS CADENA','ALIAS_T',2,'p_ALIAS_T','grupo03.py',140),
+  ('ALIAS_T -> CADENA','ALIAS_T',1,'p_ALIAS_T','grupo03.py',141),
+  ('JOIN_ -> JOIN_INNER_LEFT JOIN_','JOIN_',2,'p_JOIN_','grupo03.py',144),
+  ('JOIN_ -> <empty>','JOIN_',0,'p_JOIN_','grupo03.py',145),
+  ('JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W','JOIN_INNER_LEFT',6,'p_JOIN_INNER_LEFT','grupo03.py',148),
+  ('JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W','JOIN_INNER_LEFT',6,'p_JOIN_INNER_LEFT','grupo03.py',149),
+  ('WHERE_ -> WHERE COND_W','WHERE_',2,'p_WHERE_','grupo03.py',152),
+  ('WHERE_ -> <empty>','WHERE_',0,'p_WHERE_','grupo03.py',153),
+  ('COND_W -> CONDICION','COND_W',1,'p_COND_W','grupo03.py',156),
+  ('COND_W -> CADENA PUNTO CADENA SUBCONSULTA','COND_W',4,'p_COND_W','grupo03.py',157),
+  ('COND_W -> COND_W AND COND_W','COND_W',3,'p_COND_W','grupo03.py',158),
+  ('COND_W -> COND_W OR COND_W','COND_W',3,'p_COND_W','grupo03.py',159),
+  ('COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER','COND_W',5,'p_COND_W','grupo03.py',160),
+  ('SUBCONSULTA -> IN PAR_IZQ S PAR_DER','SUBCONSULTA',4,'p_SUBCONSULTA','grupo03.py',163),
+  ('SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER','SUBCONSULTA',5,'p_SUBCONSULTA','grupo03.py',164),
+  ('VALOR -> NUMERO','VALOR',1,'p_VALOR','grupo03.py',167),
+  ('VALOR -> COMILLA CADENA COMILLA','VALOR',3,'p_VALOR','grupo03.py',168),
+  ('CONDICION -> CADENA PUNTO CADENA SIGNO VALOR','CONDICION',5,'p_CONDICION','grupo03.py',171),
+  ('CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA','CONDICION',7,'p_CONDICION','grupo03.py',172),
+  ('CONDICION -> CADENA PUNTO CADENA NULLEABLE','CONDICION',4,'p_CONDICION','grupo03.py',173),
+  ('NULLEABLE -> IS NOT NULL','NULLEABLE',3,'p_NULLEABLE','grupo03.py',176),
+  ('NULLEABLE -> IS NULL','NULLEABLE',2,'p_NULLEABLE','grupo03.py',177),
+  ('SIGNO -> IGUAL','SIGNO',1,'p_SIGNO','grupo03.py',180),
+  ('SIGNO -> MAYOR','SIGNO',1,'p_SIGNO','grupo03.py',181),
+  ('SIGNO -> MENOR','SIGNO',1,'p_SIGNO','grupo03.py',182),
+  ('SIGNO -> MAYOR_IGUAL','SIGNO',1,'p_SIGNO','grupo03.py',183),
+  ('SIGNO -> MENOR_IGUAL','SIGNO',1,'p_SIGNO','grupo03.py',184),
+  ('SIGNO -> DESIGUAL','SIGNO',1,'p_SIGNO','grupo03.py',185),
+  ('GROUP_BY -> GROUP BY CAMPOS_G HAVING_','GROUP_BY',4,'p_GROUP_BY','grupo03.py',188),
+  ('GROUP_BY -> <empty>','GROUP_BY',0,'p_GROUP_BY','grupo03.py',189),
+  ('CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G','CAMPOS_G',5,'p_CAMPOS_G','grupo03.py',192),
+  ('CAMPOS_G -> CADENA PUNTO CADENA','CAMPOS_G',3,'p_CAMPOS_G','grupo03.py',193),
+  ('HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR','HAVING_',4,'p_HAVING_','grupo03.py',196),
+  ('HAVING_ -> <empty>','HAVING_',0,'p_HAVING_','grupo03.py',197),
+  ('ORDER_BY -> ORDER BY CAMPOS_O','ORDER_BY',3,'p_ORDER_BY','grupo03.py',200),
+  ('ORDER_BY -> <empty>','ORDER_BY',0,'p_ORDER_BY','grupo03.py',201),
+  ('CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O','CAMPOS_O',6,'p_CAMPOS_O','grupo03.py',204),
+  ('CAMPOS_O -> CADENA PUNTO CADENA ORDEN','CAMPOS_O',4,'p_CAMPOS_O','grupo03.py',205),
+  ('ORDEN -> ASC','ORDEN',1,'p_ORDEN','grupo03.py',208),
+  ('ORDEN -> DESC','ORDEN',1,'p_ORDEN','grupo03.py',209),
+  ('ORDEN -> <empty>','ORDEN',0,'p_ORDEN','grupo03.py',210),
 ]

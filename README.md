@@ -24,10 +24,10 @@ FROM_ : FROM cadena ALIAS_T
 ALIAS_T : AS cadena
 | : cadena
 
-JOIN_ : JOIN JOIN_ 
+JOIN_ : JOIN_INNER_LEFT JOIN_ 
 | : 𝛌
 
-JOIN : INNER JOIN cadena ALIAS_T ON COND_W
+JOIN_INNER_LEFT : INNER JOIN cadena ALIAS_T ON COND_W
 | : LEFT JOIN cadena ALIAS_T ON COND_W
 
 WHERE_ : WHERE COND_W
@@ -77,3 +77,6 @@ CAMPOS_O : cadena . cadena ORDEN , CAMPOS_O
 ORDEN : ASC
 | : DESC
 | : 𝛌
+
+
+SELECT P.Nombre FROM Personas AS P
