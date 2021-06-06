@@ -5,124 +5,124 @@ Grammar
 Rule 0     S' -> S
 Rule 1     S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
 Rule 2     SELECT_ -> SELECT CAMPOS
-Rule 3     CAMPOS -> CAMPO COMA CAMPOS
-Rule 4     CAMPOS -> CAMPO
-Rule 5     CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
-Rule 6     CAMPO -> CADENA PUNTO CADENA
-Rule 7     CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA
-Rule 8     FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
-Rule 9     FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
-Rule 10    FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
-Rule 11    FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
-Rule 12    FROM_ -> FROM CADENA CADENA
-Rule 13    FROM_ -> FROM CADENA AS CADENA
-Rule 14    FROM_ -> FROM CADENA
-Rule 15    ALIAS_T -> AS CADENA
-Rule 16    ALIAS_T -> CADENA
-Rule 17    JOIN_ -> JOIN_INNER_LEFT JOIN_
-Rule 18    JOIN_ -> <empty>
-Rule 19    JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W
-Rule 20    JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W
-Rule 21    WHERE_ -> WHERE COND_W
-Rule 22    WHERE_ -> <empty>
-Rule 23    COND_W -> CONDICION
-Rule 24    COND_W -> CADENA PUNTO CADENA SUBCONSULTA
-Rule 25    COND_W -> COND_W AND COND_W
-Rule 26    COND_W -> COND_W OR COND_W
-Rule 27    COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER
-Rule 28    SUBCONSULTA -> IN PAR_IZQ S PAR_DER
-Rule 29    SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER
-Rule 30    VALOR -> NUMERO
-Rule 31    VALOR -> COMILLA CADENA COMILLA
-Rule 32    CONDICION -> CADENA PUNTO CADENA SIGNO VALOR
-Rule 33    CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-Rule 34    CONDICION -> CADENA PUNTO CADENA NULLEABLE
-Rule 35    NULLEABLE -> IS NOT NULL
-Rule 36    NULLEABLE -> IS NULL
-Rule 37    SIGNO -> IGUAL
-Rule 38    SIGNO -> MAYOR
-Rule 39    SIGNO -> MENOR
-Rule 40    SIGNO -> MAYOR_IGUAL
-Rule 41    SIGNO -> MENOR_IGUAL
-Rule 42    SIGNO -> DESIGUAL
-Rule 43    GROUP_BY -> GROUP BY CAMPOS_G HAVING_
-Rule 44    GROUP_BY -> <empty>
-Rule 45    CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G
-Rule 46    CAMPOS_G -> CADENA PUNTO CADENA
-Rule 47    HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR
-Rule 48    HAVING_ -> <empty>
-Rule 49    ORDER_BY -> ORDER BY CAMPOS_O
-Rule 50    ORDER_BY -> <empty>
-Rule 51    CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
-Rule 52    CAMPOS_O -> CADENA PUNTO CADENA ORDEN
-Rule 53    ORDEN -> ASC
-Rule 54    ORDEN -> DESC
-Rule 55    ORDEN -> <empty>
+Rule 3     SELECT_ -> SELECT DISTINCT CAMPOS
+Rule 4     CAMPOS -> CAMPO COMA CAMPOS
+Rule 5     CAMPOS -> CAMPO
+Rule 6     CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
+Rule 7     CAMPO -> CADENA PUNTO CADENA
+Rule 8     CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA
+Rule 9     FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
+Rule 10    FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
+Rule 11    FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
+Rule 12    FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
+Rule 13    FROM_ -> FROM CADENA CADENA
+Rule 14    FROM_ -> FROM CADENA AS CADENA
+Rule 15    FROM_ -> FROM CADENA
+Rule 16    JOIN_ -> JOIN_INNER_LEFT JOIN_
+Rule 17    JOIN_ -> <empty>
+Rule 18    JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W
+Rule 19    JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W
+Rule 20    JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W
+Rule 21    JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W
+Rule 22    WHERE_ -> WHERE COND_W
+Rule 23    WHERE_ -> <empty>
+Rule 24    COND_W -> CONDICION
+Rule 25    COND_W -> CADENA PUNTO CADENA SUBCONSULTA
+Rule 26    COND_W -> COND_W AND COND_W
+Rule 27    COND_W -> COND_W OR COND_W
+Rule 28    COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER
+Rule 29    SUBCONSULTA -> IN PAR_IZQ S PAR_DER
+Rule 30    SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER
+Rule 31    VALOR -> NUMERO
+Rule 32    VALOR -> COMILLA CADENA COMILLA
+Rule 33    CONDICION -> CADENA PUNTO CADENA SIGNO VALOR
+Rule 34    CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+Rule 35    CONDICION -> CADENA PUNTO CADENA NULLEABLE
+Rule 36    NULLEABLE -> IS NOT NULL
+Rule 37    NULLEABLE -> IS NULL
+Rule 38    SIGNO -> IGUAL
+Rule 39    SIGNO -> MAYOR
+Rule 40    SIGNO -> MENOR
+Rule 41    SIGNO -> MAYOR_IGUAL
+Rule 42    SIGNO -> MENOR_IGUAL
+Rule 43    SIGNO -> DESIGUAL
+Rule 44    GROUP_BY -> GROUP BY CAMPOS_G HAVING_
+Rule 45    GROUP_BY -> <empty>
+Rule 46    CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G
+Rule 47    CAMPOS_G -> CADENA PUNTO CADENA
+Rule 48    HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR
+Rule 49    HAVING_ -> <empty>
+Rule 50    ORDER_BY -> ORDER BY CAMPOS_O
+Rule 51    ORDER_BY -> <empty>
+Rule 52    CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
+Rule 53    CAMPOS_O -> CADENA PUNTO CADENA ORDEN
+Rule 54    ORDEN -> ASC
+Rule 55    ORDEN -> DESC
+Rule 56    ORDEN -> <empty>
 
 Terminals, with rules where they appear
 
-AND                  : 25
-AS                   : 5 7 13 15
-ASC                  : 53
-BY                   : 43 49
-CADENA               : 5 5 5 6 6 7 8 8 9 9 10 10 11 11 12 12 13 13 14 15 16 19 20 24 24 31 32 32 33 33 33 33 34 34 45 45 46 46 51 51 52 52
-COMA                 : 3 45 51
-COMILLA              : 5 5 7 7 31 31
-COUNT                : 10 11
-DESC                 : 54
-DESIGUAL             : 42
-DISTINCT             : 11
-FROM                 : 12 13 14
-GROUP                : 43
-HAVING               : 47
-IGUAL                : 37
-IN                   : 28 29
-INNER                : 19
-IS                   : 35 36
-JOIN                 : 19 20
-LEFT                 : 20
-MAX                  : 9
-MAYOR                : 38
-MAYOR_IGUAL          : 40
-MENOR                : 39
-MENOR_IGUAL          : 41
-MIN                  : 8
-NOT                  : 29 35
-NULL                 : 35 36
-NUMERO               : 30
-ON                   : 19 20
-OR                   : 26 27
-ORDER                : 49
-PAR_DER              : 8 9 10 11 27 28 29
-PAR_IZQ              : 8 9 10 11 27 28 29
-PUNTO                : 5 6 8 9 10 11 24 32 33 33 34 45 46 51 52
-SELECT               : 2
-WHERE                : 21
+AND                  : 26
+AS                   : 6 8 14 19 21
+ASC                  : 54
+BY                   : 44 50
+CADENA               : 6 6 6 7 7 8 9 9 10 10 11 11 12 12 13 13 14 14 15 18 18 19 19 20 20 21 21 25 25 32 33 33 34 34 34 34 35 35 46 46 47 47 52 52 53 53
+COMA                 : 4 46 52
+COMILLA              : 6 6 8 8 32 32
+COUNT                : 11 12
+DESC                 : 55
+DESIGUAL             : 43
+DISTINCT             : 3 12
+FROM                 : 13 14 15
+GROUP                : 44
+HAVING               : 48
+IGUAL                : 38
+IN                   : 29 30
+INNER                : 18 19
+IS                   : 36 37
+JOIN                 : 18 19 20 21
+LEFT                 : 20 21
+MAX                  : 10
+MAYOR                : 39
+MAYOR_IGUAL          : 41
+MENOR                : 40
+MENOR_IGUAL          : 42
+MIN                  : 9
+NOT                  : 30 36
+NULL                 : 36 37
+NUMERO               : 31
+ON                   : 18 19 20 21
+OR                   : 27 28
+ORDER                : 50
+PAR_DER              : 9 10 11 12 28 29 30
+PAR_IZQ              : 9 10 11 12 28 29 30
+PUNTO                : 6 7 9 10 11 12 25 33 34 34 35 46 47 52 53
+SELECT               : 2 3
+WHERE                : 22
 error                : 
 
 Nonterminals, with rules where they appear
 
-ALIAS_T              : 19 20
-CAMPO                : 3 4
-CAMPOS               : 2 3
-CAMPOS_G             : 43 45
-CAMPOS_O             : 49 51
-CONDICION            : 23
-COND_W               : 19 20 21 25 25 26 26 27 27
+CAMPO                : 4 5
+CAMPOS               : 2 3 4
+CAMPOS_G             : 44 46
+CAMPOS_O             : 50 52
+CONDICION            : 24
+COND_W               : 18 19 20 21 22 26 26 27 27 28 28
 FROM_                : 1
-FUNC_RESUMEN         : 7 47
+FUNC_RESUMEN         : 8 48
 GROUP_BY             : 1
-HAVING_              : 43
-JOIN_                : 1 17
-JOIN_INNER_LEFT      : 17
-NULLEABLE            : 34
-ORDEN                : 51 52
+HAVING_              : 44
+JOIN_                : 1 16
+JOIN_INNER_LEFT      : 16
+NULLEABLE            : 35
+ORDEN                : 52 53
 ORDER_BY             : 1
-S                    : 28 29 0
+S                    : 29 30 0
 SELECT_              : 1
-SIGNO                : 32 33 47
-SUBCONSULTA          : 24
-VALOR                : 32 47
+SIGNO                : 33 34 48
+SUBCONSULTA          : 25
+VALOR                : 33 48
 WHERE_               : 1
 
 Parsing method: LALR
@@ -132,6 +132,7 @@ state 0
     (0) S' -> . S
     (1) S -> . SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
     (2) SELECT_ -> . SELECT CAMPOS
+    (3) SELECT_ -> . SELECT DISTINCT CAMPOS
 
     SELECT          shift and go to state 3
 
@@ -147,9 +148,9 @@ state 1
 state 2
 
     (1) S -> SELECT_ . FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
-    (12) FROM_ -> . FROM CADENA CADENA
-    (13) FROM_ -> . FROM CADENA AS CADENA
-    (14) FROM_ -> . FROM CADENA
+    (13) FROM_ -> . FROM CADENA CADENA
+    (14) FROM_ -> . FROM CADENA AS CADENA
+    (15) FROM_ -> . FROM CADENA
 
     FROM            shift and go to state 5
 
@@ -158,51 +159,55 @@ state 2
 state 3
 
     (2) SELECT_ -> SELECT . CAMPOS
-    (3) CAMPOS -> . CAMPO COMA CAMPOS
-    (4) CAMPOS -> . CAMPO
-    (5) CAMPO -> . CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
-    (6) CAMPO -> . CADENA PUNTO CADENA
-    (7) CAMPO -> . FUNC_RESUMEN AS COMILLA CADENA COMILLA
-    (8) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (9) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (10) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
+    (3) SELECT_ -> SELECT . DISTINCT CAMPOS
+    (4) CAMPOS -> . CAMPO COMA CAMPOS
+    (5) CAMPOS -> . CAMPO
+    (6) CAMPO -> . CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
+    (7) CAMPO -> . CADENA PUNTO CADENA
+    (8) CAMPO -> . FUNC_RESUMEN AS COMILLA CADENA COMILLA
+    (9) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    CADENA          shift and go to state 8
-    MIN             shift and go to state 10
-    MAX             shift and go to state 11
-    COUNT           shift and go to state 12
+    DISTINCT        shift and go to state 7
+    CADENA          shift and go to state 9
+    MIN             shift and go to state 11
+    MAX             shift and go to state 12
+    COUNT           shift and go to state 13
 
     CAMPOS                         shift and go to state 6
-    CAMPO                          shift and go to state 7
-    FUNC_RESUMEN                   shift and go to state 9
+    CAMPO                          shift and go to state 8
+    FUNC_RESUMEN                   shift and go to state 10
 
 state 4
 
     (1) S -> SELECT_ FROM_ . JOIN_ WHERE_ GROUP_BY ORDER_BY
-    (17) JOIN_ -> . JOIN_INNER_LEFT JOIN_
-    (18) JOIN_ -> .
-    (19) JOIN_INNER_LEFT -> . INNER JOIN CADENA ALIAS_T ON COND_W
-    (20) JOIN_INNER_LEFT -> . LEFT JOIN CADENA ALIAS_T ON COND_W
+    (16) JOIN_ -> . JOIN_INNER_LEFT JOIN_
+    (17) JOIN_ -> .
+    (18) JOIN_INNER_LEFT -> . INNER JOIN CADENA CADENA ON COND_W
+    (19) JOIN_INNER_LEFT -> . INNER JOIN CADENA AS CADENA ON COND_W
+    (20) JOIN_INNER_LEFT -> . LEFT JOIN CADENA CADENA ON COND_W
+    (21) JOIN_INNER_LEFT -> . LEFT JOIN CADENA AS CADENA ON COND_W
 
-    WHERE           reduce using rule 18 (JOIN_ -> .)
-    GROUP           reduce using rule 18 (JOIN_ -> .)
-    ORDER           reduce using rule 18 (JOIN_ -> .)
-    $end            reduce using rule 18 (JOIN_ -> .)
-    PAR_DER         reduce using rule 18 (JOIN_ -> .)
-    INNER           shift and go to state 15
-    LEFT            shift and go to state 16
+    WHERE           reduce using rule 17 (JOIN_ -> .)
+    GROUP           reduce using rule 17 (JOIN_ -> .)
+    ORDER           reduce using rule 17 (JOIN_ -> .)
+    $end            reduce using rule 17 (JOIN_ -> .)
+    PAR_DER         reduce using rule 17 (JOIN_ -> .)
+    INNER           shift and go to state 16
+    LEFT            shift and go to state 17
 
-    JOIN_                          shift and go to state 13
-    JOIN_INNER_LEFT                shift and go to state 14
+    JOIN_                          shift and go to state 14
+    JOIN_INNER_LEFT                shift and go to state 15
 
 state 5
 
-    (12) FROM_ -> FROM . CADENA CADENA
-    (13) FROM_ -> FROM . CADENA AS CADENA
-    (14) FROM_ -> FROM . CADENA
+    (13) FROM_ -> FROM . CADENA CADENA
+    (14) FROM_ -> FROM . CADENA AS CADENA
+    (15) FROM_ -> FROM . CADENA
 
-    CADENA          shift and go to state 17
+    CADENA          shift and go to state 18
 
 
 state 6
@@ -214,456 +219,487 @@ state 6
 
 state 7
 
-    (3) CAMPOS -> CAMPO . COMA CAMPOS
-    (4) CAMPOS -> CAMPO .
+    (3) SELECT_ -> SELECT DISTINCT . CAMPOS
+    (4) CAMPOS -> . CAMPO COMA CAMPOS
+    (5) CAMPOS -> . CAMPO
+    (6) CAMPO -> . CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
+    (7) CAMPO -> . CADENA PUNTO CADENA
+    (8) CAMPO -> . FUNC_RESUMEN AS COMILLA CADENA COMILLA
+    (9) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    COMA            shift and go to state 18
-    FROM            reduce using rule 4 (CAMPOS -> CAMPO .)
+    CADENA          shift and go to state 9
+    MIN             shift and go to state 11
+    MAX             shift and go to state 12
+    COUNT           shift and go to state 13
 
+    CAMPOS                         shift and go to state 19
+    CAMPO                          shift and go to state 8
+    FUNC_RESUMEN                   shift and go to state 10
 
 state 8
 
-    (5) CAMPO -> CADENA . PUNTO CADENA AS COMILLA CADENA COMILLA
-    (6) CAMPO -> CADENA . PUNTO CADENA
+    (4) CAMPOS -> CAMPO . COMA CAMPOS
+    (5) CAMPOS -> CAMPO .
 
-    PUNTO           shift and go to state 19
+    COMA            shift and go to state 20
+    FROM            reduce using rule 5 (CAMPOS -> CAMPO .)
 
 
 state 9
 
-    (7) CAMPO -> FUNC_RESUMEN . AS COMILLA CADENA COMILLA
+    (6) CAMPO -> CADENA . PUNTO CADENA AS COMILLA CADENA COMILLA
+    (7) CAMPO -> CADENA . PUNTO CADENA
 
-    AS              shift and go to state 20
+    PUNTO           shift and go to state 21
 
 
 state 10
 
-    (8) FUNC_RESUMEN -> MIN . PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (8) CAMPO -> FUNC_RESUMEN . AS COMILLA CADENA COMILLA
 
-    PAR_IZQ         shift and go to state 21
+    AS              shift and go to state 22
 
 
 state 11
 
-    (9) FUNC_RESUMEN -> MAX . PAR_IZQ CADENA PUNTO CADENA PAR_DER
-
-    PAR_IZQ         shift and go to state 22
-
-
-state 12
-
-    (10) FUNC_RESUMEN -> COUNT . PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (11) FUNC_RESUMEN -> COUNT . PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
+    (9) FUNC_RESUMEN -> MIN . PAR_IZQ CADENA PUNTO CADENA PAR_DER
 
     PAR_IZQ         shift and go to state 23
 
 
+state 12
+
+    (10) FUNC_RESUMEN -> MAX . PAR_IZQ CADENA PUNTO CADENA PAR_DER
+
+    PAR_IZQ         shift and go to state 24
+
+
 state 13
 
-    (1) S -> SELECT_ FROM_ JOIN_ . WHERE_ GROUP_BY ORDER_BY
-    (21) WHERE_ -> . WHERE COND_W
-    (22) WHERE_ -> .
+    (11) FUNC_RESUMEN -> COUNT . PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> COUNT . PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    WHERE           shift and go to state 25
-    GROUP           reduce using rule 22 (WHERE_ -> .)
-    ORDER           reduce using rule 22 (WHERE_ -> .)
-    $end            reduce using rule 22 (WHERE_ -> .)
-    PAR_DER         reduce using rule 22 (WHERE_ -> .)
+    PAR_IZQ         shift and go to state 25
 
-    WHERE_                         shift and go to state 24
 
 state 14
 
-    (17) JOIN_ -> JOIN_INNER_LEFT . JOIN_
-    (17) JOIN_ -> . JOIN_INNER_LEFT JOIN_
-    (18) JOIN_ -> .
-    (19) JOIN_INNER_LEFT -> . INNER JOIN CADENA ALIAS_T ON COND_W
-    (20) JOIN_INNER_LEFT -> . LEFT JOIN CADENA ALIAS_T ON COND_W
+    (1) S -> SELECT_ FROM_ JOIN_ . WHERE_ GROUP_BY ORDER_BY
+    (22) WHERE_ -> . WHERE COND_W
+    (23) WHERE_ -> .
 
-    WHERE           reduce using rule 18 (JOIN_ -> .)
-    GROUP           reduce using rule 18 (JOIN_ -> .)
-    ORDER           reduce using rule 18 (JOIN_ -> .)
-    $end            reduce using rule 18 (JOIN_ -> .)
-    PAR_DER         reduce using rule 18 (JOIN_ -> .)
-    INNER           shift and go to state 15
-    LEFT            shift and go to state 16
+    WHERE           shift and go to state 27
+    GROUP           reduce using rule 23 (WHERE_ -> .)
+    ORDER           reduce using rule 23 (WHERE_ -> .)
+    $end            reduce using rule 23 (WHERE_ -> .)
+    PAR_DER         reduce using rule 23 (WHERE_ -> .)
 
-    JOIN_INNER_LEFT                shift and go to state 14
-    JOIN_                          shift and go to state 26
+    WHERE_                         shift and go to state 26
 
 state 15
 
-    (19) JOIN_INNER_LEFT -> INNER . JOIN CADENA ALIAS_T ON COND_W
+    (16) JOIN_ -> JOIN_INNER_LEFT . JOIN_
+    (16) JOIN_ -> . JOIN_INNER_LEFT JOIN_
+    (17) JOIN_ -> .
+    (18) JOIN_INNER_LEFT -> . INNER JOIN CADENA CADENA ON COND_W
+    (19) JOIN_INNER_LEFT -> . INNER JOIN CADENA AS CADENA ON COND_W
+    (20) JOIN_INNER_LEFT -> . LEFT JOIN CADENA CADENA ON COND_W
+    (21) JOIN_INNER_LEFT -> . LEFT JOIN CADENA AS CADENA ON COND_W
 
-    JOIN            shift and go to state 27
+    WHERE           reduce using rule 17 (JOIN_ -> .)
+    GROUP           reduce using rule 17 (JOIN_ -> .)
+    ORDER           reduce using rule 17 (JOIN_ -> .)
+    $end            reduce using rule 17 (JOIN_ -> .)
+    PAR_DER         reduce using rule 17 (JOIN_ -> .)
+    INNER           shift and go to state 16
+    LEFT            shift and go to state 17
 
+    JOIN_INNER_LEFT                shift and go to state 15
+    JOIN_                          shift and go to state 28
 
 state 16
 
-    (20) JOIN_INNER_LEFT -> LEFT . JOIN CADENA ALIAS_T ON COND_W
+    (18) JOIN_INNER_LEFT -> INNER . JOIN CADENA CADENA ON COND_W
+    (19) JOIN_INNER_LEFT -> INNER . JOIN CADENA AS CADENA ON COND_W
 
-    JOIN            shift and go to state 28
+    JOIN            shift and go to state 29
 
 
 state 17
 
-    (12) FROM_ -> FROM CADENA . CADENA
-    (13) FROM_ -> FROM CADENA . AS CADENA
-    (14) FROM_ -> FROM CADENA .
+    (20) JOIN_INNER_LEFT -> LEFT . JOIN CADENA CADENA ON COND_W
+    (21) JOIN_INNER_LEFT -> LEFT . JOIN CADENA AS CADENA ON COND_W
 
-    CADENA          shift and go to state 29
-    AS              shift and go to state 30
-    INNER           reduce using rule 14 (FROM_ -> FROM CADENA .)
-    LEFT            reduce using rule 14 (FROM_ -> FROM CADENA .)
-    WHERE           reduce using rule 14 (FROM_ -> FROM CADENA .)
-    GROUP           reduce using rule 14 (FROM_ -> FROM CADENA .)
-    ORDER           reduce using rule 14 (FROM_ -> FROM CADENA .)
-    $end            reduce using rule 14 (FROM_ -> FROM CADENA .)
-    PAR_DER         reduce using rule 14 (FROM_ -> FROM CADENA .)
+    JOIN            shift and go to state 30
 
 
 state 18
 
-    (3) CAMPOS -> CAMPO COMA . CAMPOS
-    (3) CAMPOS -> . CAMPO COMA CAMPOS
-    (4) CAMPOS -> . CAMPO
-    (5) CAMPO -> . CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
-    (6) CAMPO -> . CADENA PUNTO CADENA
-    (7) CAMPO -> . FUNC_RESUMEN AS COMILLA CADENA COMILLA
-    (8) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (9) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (10) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
+    (13) FROM_ -> FROM CADENA . CADENA
+    (14) FROM_ -> FROM CADENA . AS CADENA
+    (15) FROM_ -> FROM CADENA .
 
-    CADENA          shift and go to state 8
-    MIN             shift and go to state 10
-    MAX             shift and go to state 11
-    COUNT           shift and go to state 12
+    CADENA          shift and go to state 31
+    AS              shift and go to state 32
+    INNER           reduce using rule 15 (FROM_ -> FROM CADENA .)
+    LEFT            reduce using rule 15 (FROM_ -> FROM CADENA .)
+    WHERE           reduce using rule 15 (FROM_ -> FROM CADENA .)
+    GROUP           reduce using rule 15 (FROM_ -> FROM CADENA .)
+    ORDER           reduce using rule 15 (FROM_ -> FROM CADENA .)
+    $end            reduce using rule 15 (FROM_ -> FROM CADENA .)
+    PAR_DER         reduce using rule 15 (FROM_ -> FROM CADENA .)
 
-    CAMPO                          shift and go to state 7
-    CAMPOS                         shift and go to state 31
-    FUNC_RESUMEN                   shift and go to state 9
 
 state 19
 
-    (5) CAMPO -> CADENA PUNTO . CADENA AS COMILLA CADENA COMILLA
-    (6) CAMPO -> CADENA PUNTO . CADENA
+    (3) SELECT_ -> SELECT DISTINCT CAMPOS .
 
-    CADENA          shift and go to state 32
+    FROM            reduce using rule 3 (SELECT_ -> SELECT DISTINCT CAMPOS .)
 
 
 state 20
 
-    (7) CAMPO -> FUNC_RESUMEN AS . COMILLA CADENA COMILLA
+    (4) CAMPOS -> CAMPO COMA . CAMPOS
+    (4) CAMPOS -> . CAMPO COMA CAMPOS
+    (5) CAMPOS -> . CAMPO
+    (6) CAMPO -> . CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
+    (7) CAMPO -> . CADENA PUNTO CADENA
+    (8) CAMPO -> . FUNC_RESUMEN AS COMILLA CADENA COMILLA
+    (9) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    COMILLA         shift and go to state 33
+    CADENA          shift and go to state 9
+    MIN             shift and go to state 11
+    MAX             shift and go to state 12
+    COUNT           shift and go to state 13
 
+    CAMPO                          shift and go to state 8
+    CAMPOS                         shift and go to state 33
+    FUNC_RESUMEN                   shift and go to state 10
 
 state 21
 
-    (8) FUNC_RESUMEN -> MIN PAR_IZQ . CADENA PUNTO CADENA PAR_DER
+    (6) CAMPO -> CADENA PUNTO . CADENA AS COMILLA CADENA COMILLA
+    (7) CAMPO -> CADENA PUNTO . CADENA
 
     CADENA          shift and go to state 34
 
 
 state 22
 
-    (9) FUNC_RESUMEN -> MAX PAR_IZQ . CADENA PUNTO CADENA PAR_DER
+    (8) CAMPO -> FUNC_RESUMEN AS . COMILLA CADENA COMILLA
 
-    CADENA          shift and go to state 35
+    COMILLA         shift and go to state 35
 
 
 state 23
 
-    (10) FUNC_RESUMEN -> COUNT PAR_IZQ . CADENA PUNTO CADENA PAR_DER
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ . DISTINCT CADENA PUNTO CADENA PAR_DER
+    (9) FUNC_RESUMEN -> MIN PAR_IZQ . CADENA PUNTO CADENA PAR_DER
 
     CADENA          shift and go to state 36
-    DISTINCT        shift and go to state 37
 
 
 state 24
 
-    (1) S -> SELECT_ FROM_ JOIN_ WHERE_ . GROUP_BY ORDER_BY
-    (43) GROUP_BY -> . GROUP BY CAMPOS_G HAVING_
-    (44) GROUP_BY -> .
+    (10) FUNC_RESUMEN -> MAX PAR_IZQ . CADENA PUNTO CADENA PAR_DER
 
-    GROUP           shift and go to state 39
-    ORDER           reduce using rule 44 (GROUP_BY -> .)
-    $end            reduce using rule 44 (GROUP_BY -> .)
-    PAR_DER         reduce using rule 44 (GROUP_BY -> .)
+    CADENA          shift and go to state 37
 
-    GROUP_BY                       shift and go to state 38
 
 state 25
 
-    (21) WHERE_ -> WHERE . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (11) FUNC_RESUMEN -> COUNT PAR_IZQ . CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ . DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    CADENA          shift and go to state 38
+    DISTINCT        shift and go to state 39
 
-    COND_W                         shift and go to state 40
-    CONDICION                      shift and go to state 41
 
 state 26
 
-    (17) JOIN_ -> JOIN_INNER_LEFT JOIN_ .
+    (1) S -> SELECT_ FROM_ JOIN_ WHERE_ . GROUP_BY ORDER_BY
+    (44) GROUP_BY -> . GROUP BY CAMPOS_G HAVING_
+    (45) GROUP_BY -> .
 
-    WHERE           reduce using rule 17 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
-    GROUP           reduce using rule 17 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
-    ORDER           reduce using rule 17 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
-    $end            reduce using rule 17 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
-    PAR_DER         reduce using rule 17 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
+    GROUP           shift and go to state 41
+    ORDER           reduce using rule 45 (GROUP_BY -> .)
+    $end            reduce using rule 45 (GROUP_BY -> .)
+    PAR_DER         reduce using rule 45 (GROUP_BY -> .)
 
+    GROUP_BY                       shift and go to state 40
 
 state 27
 
-    (19) JOIN_INNER_LEFT -> INNER JOIN . CADENA ALIAS_T ON COND_W
+    (22) WHERE_ -> WHERE . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
     CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 42
+    CONDICION                      shift and go to state 43
 
 state 28
 
-    (20) JOIN_INNER_LEFT -> LEFT JOIN . CADENA ALIAS_T ON COND_W
+    (16) JOIN_ -> JOIN_INNER_LEFT JOIN_ .
 
-    CADENA          shift and go to state 45
+    WHERE           reduce using rule 16 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
+    GROUP           reduce using rule 16 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
+    ORDER           reduce using rule 16 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
+    $end            reduce using rule 16 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
+    PAR_DER         reduce using rule 16 (JOIN_ -> JOIN_INNER_LEFT JOIN_ .)
 
 
 state 29
 
-    (12) FROM_ -> FROM CADENA CADENA .
-
-    INNER           reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    LEFT            reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    WHERE           reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    GROUP           reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    ORDER           reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    $end            reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-    PAR_DER         reduce using rule 12 (FROM_ -> FROM CADENA CADENA .)
-
-
-state 30
-
-    (13) FROM_ -> FROM CADENA AS . CADENA
+    (18) JOIN_INNER_LEFT -> INNER JOIN . CADENA CADENA ON COND_W
+    (19) JOIN_INNER_LEFT -> INNER JOIN . CADENA AS CADENA ON COND_W
 
     CADENA          shift and go to state 46
 
 
+state 30
+
+    (20) JOIN_INNER_LEFT -> LEFT JOIN . CADENA CADENA ON COND_W
+    (21) JOIN_INNER_LEFT -> LEFT JOIN . CADENA AS CADENA ON COND_W
+
+    CADENA          shift and go to state 47
+
+
 state 31
 
-    (3) CAMPOS -> CAMPO COMA CAMPOS .
+    (13) FROM_ -> FROM CADENA CADENA .
 
-    FROM            reduce using rule 3 (CAMPOS -> CAMPO COMA CAMPOS .)
+    INNER           reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    LEFT            reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    WHERE           reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    GROUP           reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    ORDER           reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    $end            reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
+    PAR_DER         reduce using rule 13 (FROM_ -> FROM CADENA CADENA .)
 
 
 state 32
 
-    (5) CAMPO -> CADENA PUNTO CADENA . AS COMILLA CADENA COMILLA
-    (6) CAMPO -> CADENA PUNTO CADENA .
-
-    AS              shift and go to state 47
-    COMA            reduce using rule 6 (CAMPO -> CADENA PUNTO CADENA .)
-    FROM            reduce using rule 6 (CAMPO -> CADENA PUNTO CADENA .)
-
-
-state 33
-
-    (7) CAMPO -> FUNC_RESUMEN AS COMILLA . CADENA COMILLA
+    (14) FROM_ -> FROM CADENA AS . CADENA
 
     CADENA          shift and go to state 48
 
 
+state 33
+
+    (4) CAMPOS -> CAMPO COMA CAMPOS .
+
+    FROM            reduce using rule 4 (CAMPOS -> CAMPO COMA CAMPOS .)
+
+
 state 34
 
-    (8) FUNC_RESUMEN -> MIN PAR_IZQ CADENA . PUNTO CADENA PAR_DER
+    (6) CAMPO -> CADENA PUNTO CADENA . AS COMILLA CADENA COMILLA
+    (7) CAMPO -> CADENA PUNTO CADENA .
 
-    PUNTO           shift and go to state 49
+    AS              shift and go to state 49
+    COMA            reduce using rule 7 (CAMPO -> CADENA PUNTO CADENA .)
+    FROM            reduce using rule 7 (CAMPO -> CADENA PUNTO CADENA .)
 
 
 state 35
 
-    (9) FUNC_RESUMEN -> MAX PAR_IZQ CADENA . PUNTO CADENA PAR_DER
+    (8) CAMPO -> FUNC_RESUMEN AS COMILLA . CADENA COMILLA
 
-    PUNTO           shift and go to state 50
+    CADENA          shift and go to state 50
 
 
 state 36
 
-    (10) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA . PUNTO CADENA PAR_DER
+    (9) FUNC_RESUMEN -> MIN PAR_IZQ CADENA . PUNTO CADENA PAR_DER
 
     PUNTO           shift and go to state 51
 
 
 state 37
 
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT . CADENA PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> MAX PAR_IZQ CADENA . PUNTO CADENA PAR_DER
 
-    CADENA          shift and go to state 52
+    PUNTO           shift and go to state 52
 
 
 state 38
 
-    (1) S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY . ORDER_BY
-    (49) ORDER_BY -> . ORDER BY CAMPOS_O
-    (50) ORDER_BY -> .
+    (11) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA . PUNTO CADENA PAR_DER
 
-    ORDER           shift and go to state 54
-    $end            reduce using rule 50 (ORDER_BY -> .)
-    PAR_DER         reduce using rule 50 (ORDER_BY -> .)
+    PUNTO           shift and go to state 53
 
-    ORDER_BY                       shift and go to state 53
 
 state 39
 
-    (43) GROUP_BY -> GROUP . BY CAMPOS_G HAVING_
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT . CADENA PUNTO CADENA PAR_DER
 
-    BY              shift and go to state 55
+    CADENA          shift and go to state 54
 
 
 state 40
 
-    (21) WHERE_ -> WHERE COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (1) S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY . ORDER_BY
+    (50) ORDER_BY -> . ORDER BY CAMPOS_O
+    (51) ORDER_BY -> .
 
-    GROUP           reduce using rule 21 (WHERE_ -> WHERE COND_W .)
-    ORDER           reduce using rule 21 (WHERE_ -> WHERE COND_W .)
-    $end            reduce using rule 21 (WHERE_ -> WHERE COND_W .)
-    PAR_DER         reduce using rule 21 (WHERE_ -> WHERE COND_W .)
-    AND             shift and go to state 56
-    OR              shift and go to state 57
+    ORDER           shift and go to state 56
+    $end            reduce using rule 51 (ORDER_BY -> .)
+    PAR_DER         reduce using rule 51 (ORDER_BY -> .)
 
+    ORDER_BY                       shift and go to state 55
 
 state 41
 
-    (23) COND_W -> CONDICION .
+    (44) GROUP_BY -> GROUP . BY CAMPOS_G HAVING_
 
-    AND             reduce using rule 23 (COND_W -> CONDICION .)
-    OR              reduce using rule 23 (COND_W -> CONDICION .)
-    GROUP           reduce using rule 23 (COND_W -> CONDICION .)
-    ORDER           reduce using rule 23 (COND_W -> CONDICION .)
-    $end            reduce using rule 23 (COND_W -> CONDICION .)
-    PAR_DER         reduce using rule 23 (COND_W -> CONDICION .)
-    INNER           reduce using rule 23 (COND_W -> CONDICION .)
-    LEFT            reduce using rule 23 (COND_W -> CONDICION .)
-    WHERE           reduce using rule 23 (COND_W -> CONDICION .)
+    BY              shift and go to state 57
 
 
 state 42
 
-    (24) COND_W -> CADENA . PUNTO CADENA SUBCONSULTA
-    (32) CONDICION -> CADENA . PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> CADENA . PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> CADENA . PUNTO CADENA NULLEABLE
+    (22) WHERE_ -> WHERE COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    PUNTO           shift and go to state 58
+    GROUP           reduce using rule 22 (WHERE_ -> WHERE COND_W .)
+    ORDER           reduce using rule 22 (WHERE_ -> WHERE COND_W .)
+    $end            reduce using rule 22 (WHERE_ -> WHERE COND_W .)
+    PAR_DER         reduce using rule 22 (WHERE_ -> WHERE COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
 
 state 43
 
-    (27) COND_W -> PAR_IZQ . COND_W OR COND_W PAR_DER
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (24) COND_W -> CONDICION .
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    AND             reduce using rule 24 (COND_W -> CONDICION .)
+    OR              reduce using rule 24 (COND_W -> CONDICION .)
+    GROUP           reduce using rule 24 (COND_W -> CONDICION .)
+    ORDER           reduce using rule 24 (COND_W -> CONDICION .)
+    $end            reduce using rule 24 (COND_W -> CONDICION .)
+    PAR_DER         reduce using rule 24 (COND_W -> CONDICION .)
+    INNER           reduce using rule 24 (COND_W -> CONDICION .)
+    LEFT            reduce using rule 24 (COND_W -> CONDICION .)
+    WHERE           reduce using rule 24 (COND_W -> CONDICION .)
 
-    COND_W                         shift and go to state 59
-    CONDICION                      shift and go to state 41
 
 state 44
 
-    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA . ALIAS_T ON COND_W
-    (15) ALIAS_T -> . AS CADENA
-    (16) ALIAS_T -> . CADENA
+    (25) COND_W -> CADENA . PUNTO CADENA SUBCONSULTA
+    (33) CONDICION -> CADENA . PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> CADENA . PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> CADENA . PUNTO CADENA NULLEABLE
 
-    AS              shift and go to state 62
-    CADENA          shift and go to state 60
+    PUNTO           shift and go to state 60
 
-    ALIAS_T                        shift and go to state 61
 
 state 45
 
-    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA . ALIAS_T ON COND_W
-    (15) ALIAS_T -> . AS CADENA
-    (16) ALIAS_T -> . CADENA
+    (28) COND_W -> PAR_IZQ . COND_W OR COND_W PAR_DER
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    AS              shift and go to state 62
-    CADENA          shift and go to state 60
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
-    ALIAS_T                        shift and go to state 63
+    COND_W                         shift and go to state 61
+    CONDICION                      shift and go to state 43
 
 state 46
 
-    (13) FROM_ -> FROM CADENA AS CADENA .
+    (18) JOIN_INNER_LEFT -> INNER JOIN CADENA . CADENA ON COND_W
+    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA . AS CADENA ON COND_W
 
-    INNER           reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    LEFT            reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    WHERE           reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    GROUP           reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    ORDER           reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    $end            reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
-    PAR_DER         reduce using rule 13 (FROM_ -> FROM CADENA AS CADENA .)
+    CADENA          shift and go to state 62
+    AS              shift and go to state 63
 
 
 state 47
 
-    (5) CAMPO -> CADENA PUNTO CADENA AS . COMILLA CADENA COMILLA
+    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA . CADENA ON COND_W
+    (21) JOIN_INNER_LEFT -> LEFT JOIN CADENA . AS CADENA ON COND_W
 
-    COMILLA         shift and go to state 64
+    CADENA          shift and go to state 64
+    AS              shift and go to state 65
 
 
 state 48
 
-    (7) CAMPO -> FUNC_RESUMEN AS COMILLA CADENA . COMILLA
+    (14) FROM_ -> FROM CADENA AS CADENA .
 
-    COMILLA         shift and go to state 65
+    INNER           reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    LEFT            reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    WHERE           reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    GROUP           reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    ORDER           reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    $end            reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
+    PAR_DER         reduce using rule 14 (FROM_ -> FROM CADENA AS CADENA .)
 
 
 state 49
 
-    (8) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO . CADENA PAR_DER
+    (6) CAMPO -> CADENA PUNTO CADENA AS . COMILLA CADENA COMILLA
 
-    CADENA          shift and go to state 66
+    COMILLA         shift and go to state 66
 
 
 state 50
 
-    (9) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO . CADENA PAR_DER
+    (8) CAMPO -> FUNC_RESUMEN AS COMILLA CADENA . COMILLA
 
-    CADENA          shift and go to state 67
+    COMILLA         shift and go to state 67
 
 
 state 51
 
-    (10) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO . CADENA PAR_DER
+    (9) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO . CADENA PAR_DER
 
     CADENA          shift and go to state 68
 
 
 state 52
 
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA . PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO . CADENA PAR_DER
 
-    PUNTO           shift and go to state 69
+    CADENA          shift and go to state 69
 
 
 state 53
+
+    (11) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO . CADENA PAR_DER
+
+    CADENA          shift and go to state 70
+
+
+state 54
+
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA . PUNTO CADENA PAR_DER
+
+    PUNTO           shift and go to state 71
+
+
+state 55
 
     (1) S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY .
 
@@ -671,969 +707,1048 @@ state 53
     PAR_DER         reduce using rule 1 (S -> SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY .)
 
 
-state 54
-
-    (49) ORDER_BY -> ORDER . BY CAMPOS_O
-
-    BY              shift and go to state 70
-
-
-state 55
-
-    (43) GROUP_BY -> GROUP BY . CAMPOS_G HAVING_
-    (45) CAMPOS_G -> . CADENA PUNTO CADENA COMA CAMPOS_G
-    (46) CAMPOS_G -> . CADENA PUNTO CADENA
-
-    CADENA          shift and go to state 72
-
-    CAMPOS_G                       shift and go to state 71
-
 state 56
 
-    (25) COND_W -> COND_W AND . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (50) ORDER_BY -> ORDER . BY CAMPOS_O
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    BY              shift and go to state 72
 
-    COND_W                         shift and go to state 73
-    CONDICION                      shift and go to state 41
 
 state 57
 
-    (26) COND_W -> COND_W OR . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (44) GROUP_BY -> GROUP BY . CAMPOS_G HAVING_
+    (46) CAMPOS_G -> . CADENA PUNTO CADENA COMA CAMPOS_G
+    (47) CAMPOS_G -> . CADENA PUNTO CADENA
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    CADENA          shift and go to state 74
 
-    COND_W                         shift and go to state 74
-    CONDICION                      shift and go to state 41
+    CAMPOS_G                       shift and go to state 73
 
 state 58
 
-    (24) COND_W -> CADENA PUNTO . CADENA SUBCONSULTA
-    (32) CONDICION -> CADENA PUNTO . CADENA SIGNO VALOR
-    (33) CONDICION -> CADENA PUNTO . CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> CADENA PUNTO . CADENA NULLEABLE
+    (26) COND_W -> COND_W AND . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    CADENA          shift and go to state 75
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 75
+    CONDICION                      shift and go to state 43
 
 state 59
 
-    (27) COND_W -> PAR_IZQ COND_W . OR COND_W PAR_DER
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (27) COND_W -> COND_W OR . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    OR              shift and go to state 76
-    AND             shift and go to state 56
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 76
+    CONDICION                      shift and go to state 43
 
 state 60
 
-    (16) ALIAS_T -> CADENA .
+    (25) COND_W -> CADENA PUNTO . CADENA SUBCONSULTA
+    (33) CONDICION -> CADENA PUNTO . CADENA SIGNO VALOR
+    (34) CONDICION -> CADENA PUNTO . CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> CADENA PUNTO . CADENA NULLEABLE
 
-    ON              reduce using rule 16 (ALIAS_T -> CADENA .)
+    CADENA          shift and go to state 77
 
 
 state 61
 
-    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T . ON COND_W
+    (28) COND_W -> PAR_IZQ COND_W . OR COND_W PAR_DER
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    ON              shift and go to state 77
+    OR              shift and go to state 78
+    AND             shift and go to state 58
 
 
 state 62
 
-    (15) ALIAS_T -> AS . CADENA
-
-    CADENA          shift and go to state 78
-
-
-state 63
-
-    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T . ON COND_W
+    (18) JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA . ON COND_W
 
     ON              shift and go to state 79
 
 
-state 64
+state 63
 
-    (5) CAMPO -> CADENA PUNTO CADENA AS COMILLA . CADENA COMILLA
+    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA AS . CADENA ON COND_W
 
     CADENA          shift and go to state 80
 
 
+state 64
+
+    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA . ON COND_W
+
+    ON              shift and go to state 81
+
+
 state 65
 
-    (7) CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .
+    (21) JOIN_INNER_LEFT -> LEFT JOIN CADENA AS . CADENA ON COND_W
 
-    COMA            reduce using rule 7 (CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .)
-    FROM            reduce using rule 7 (CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .)
+    CADENA          shift and go to state 82
 
 
 state 66
 
-    (8) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA . PAR_DER
+    (6) CAMPO -> CADENA PUNTO CADENA AS COMILLA . CADENA COMILLA
 
-    PAR_DER         shift and go to state 81
+    CADENA          shift and go to state 83
 
 
 state 67
 
-    (9) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA . PAR_DER
+    (8) CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .
 
-    PAR_DER         shift and go to state 82
+    COMA            reduce using rule 8 (CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .)
+    FROM            reduce using rule 8 (CAMPO -> FUNC_RESUMEN AS COMILLA CADENA COMILLA .)
 
 
 state 68
 
-    (10) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA . PAR_DER
+    (9) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA . PAR_DER
 
-    PAR_DER         shift and go to state 83
+    PAR_DER         shift and go to state 84
 
 
 state 69
 
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO . CADENA PAR_DER
+    (10) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA . PAR_DER
 
-    CADENA          shift and go to state 84
+    PAR_DER         shift and go to state 85
 
 
 state 70
 
-    (49) ORDER_BY -> ORDER BY . CAMPOS_O
-    (51) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
-    (52) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN
+    (11) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA . PAR_DER
 
-    CADENA          shift and go to state 86
+    PAR_DER         shift and go to state 86
 
-    CAMPOS_O                       shift and go to state 85
 
 state 71
 
-    (43) GROUP_BY -> GROUP BY CAMPOS_G . HAVING_
-    (47) HAVING_ -> . HAVING FUNC_RESUMEN SIGNO VALOR
-    (48) HAVING_ -> .
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO . CADENA PAR_DER
 
-    HAVING          shift and go to state 88
-    ORDER           reduce using rule 48 (HAVING_ -> .)
-    $end            reduce using rule 48 (HAVING_ -> .)
-    PAR_DER         reduce using rule 48 (HAVING_ -> .)
+    CADENA          shift and go to state 87
 
-    HAVING_                        shift and go to state 87
 
 state 72
 
-    (45) CAMPOS_G -> CADENA . PUNTO CADENA COMA CAMPOS_G
-    (46) CAMPOS_G -> CADENA . PUNTO CADENA
+    (50) ORDER_BY -> ORDER BY . CAMPOS_O
+    (52) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
+    (53) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN
 
-    PUNTO           shift and go to state 89
+    CADENA          shift and go to state 89
 
+    CAMPOS_O                       shift and go to state 88
 
 state 73
 
-    (25) COND_W -> COND_W AND COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (44) GROUP_BY -> GROUP BY CAMPOS_G . HAVING_
+    (48) HAVING_ -> . HAVING FUNC_RESUMEN SIGNO VALOR
+    (49) HAVING_ -> .
 
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-    GROUP           reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    ORDER           reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    $end            reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    PAR_DER         reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    INNER           reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    LEFT            reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    WHERE           reduce using rule 25 (COND_W -> COND_W AND COND_W .)
-    AND             shift and go to state 56
-    OR              shift and go to state 57
+    HAVING          shift and go to state 91
+    ORDER           reduce using rule 49 (HAVING_ -> .)
+    $end            reduce using rule 49 (HAVING_ -> .)
+    PAR_DER         reduce using rule 49 (HAVING_ -> .)
 
-  ! AND             [ reduce using rule 25 (COND_W -> COND_W AND COND_W .) ]
-  ! OR              [ reduce using rule 25 (COND_W -> COND_W AND COND_W .) ]
-
+    HAVING_                        shift and go to state 90
 
 state 74
 
-    (26) COND_W -> COND_W OR COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (46) CAMPOS_G -> CADENA . PUNTO CADENA COMA CAMPOS_G
+    (47) CAMPOS_G -> CADENA . PUNTO CADENA
 
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-    GROUP           reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    ORDER           reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    $end            reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    PAR_DER         reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    INNER           reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    LEFT            reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    WHERE           reduce using rule 26 (COND_W -> COND_W OR COND_W .)
-    AND             shift and go to state 56
-    OR              shift and go to state 57
-
-  ! AND             [ reduce using rule 26 (COND_W -> COND_W OR COND_W .) ]
-  ! OR              [ reduce using rule 26 (COND_W -> COND_W OR COND_W .) ]
+    PUNTO           shift and go to state 92
 
 
 state 75
 
-    (24) COND_W -> CADENA PUNTO CADENA . SUBCONSULTA
-    (32) CONDICION -> CADENA PUNTO CADENA . SIGNO VALOR
-    (33) CONDICION -> CADENA PUNTO CADENA . SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> CADENA PUNTO CADENA . NULLEABLE
-    (28) SUBCONSULTA -> . IN PAR_IZQ S PAR_DER
-    (29) SUBCONSULTA -> . NOT IN PAR_IZQ S PAR_DER
-    (37) SIGNO -> . IGUAL
-    (38) SIGNO -> . MAYOR
-    (39) SIGNO -> . MENOR
-    (40) SIGNO -> . MAYOR_IGUAL
-    (41) SIGNO -> . MENOR_IGUAL
-    (42) SIGNO -> . DESIGUAL
-    (35) NULLEABLE -> . IS NOT NULL
-    (36) NULLEABLE -> . IS NULL
+    (26) COND_W -> COND_W AND COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    IN              shift and go to state 93
-    NOT             shift and go to state 94
-    IGUAL           shift and go to state 95
-    MAYOR           shift and go to state 96
-    MENOR           shift and go to state 97
-    MAYOR_IGUAL     shift and go to state 98
-    MENOR_IGUAL     shift and go to state 99
-    DESIGUAL        shift and go to state 100
-    IS              shift and go to state 101
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    GROUP           reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    ORDER           reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    $end            reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    PAR_DER         reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    INNER           reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    LEFT            reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    WHERE           reduce using rule 26 (COND_W -> COND_W AND COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
-    SUBCONSULTA                    shift and go to state 90
-    SIGNO                          shift and go to state 91
-    NULLEABLE                      shift and go to state 92
+  ! AND             [ reduce using rule 26 (COND_W -> COND_W AND COND_W .) ]
+  ! OR              [ reduce using rule 26 (COND_W -> COND_W AND COND_W .) ]
+
 
 state 76
 
-    (27) COND_W -> PAR_IZQ COND_W OR . COND_W PAR_DER
-    (26) COND_W -> COND_W OR . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (27) COND_W -> COND_W OR COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    GROUP           reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    ORDER           reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    $end            reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    PAR_DER         reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    INNER           reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    LEFT            reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    WHERE           reduce using rule 27 (COND_W -> COND_W OR COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
-    COND_W                         shift and go to state 102
-    CONDICION                      shift and go to state 41
+  ! AND             [ reduce using rule 27 (COND_W -> COND_W OR COND_W .) ]
+  ! OR              [ reduce using rule 27 (COND_W -> COND_W OR COND_W .) ]
+
 
 state 77
 
-    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (25) COND_W -> CADENA PUNTO CADENA . SUBCONSULTA
+    (33) CONDICION -> CADENA PUNTO CADENA . SIGNO VALOR
+    (34) CONDICION -> CADENA PUNTO CADENA . SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> CADENA PUNTO CADENA . NULLEABLE
+    (29) SUBCONSULTA -> . IN PAR_IZQ S PAR_DER
+    (30) SUBCONSULTA -> . NOT IN PAR_IZQ S PAR_DER
+    (38) SIGNO -> . IGUAL
+    (39) SIGNO -> . MAYOR
+    (40) SIGNO -> . MENOR
+    (41) SIGNO -> . MAYOR_IGUAL
+    (42) SIGNO -> . MENOR_IGUAL
+    (43) SIGNO -> . DESIGUAL
+    (36) NULLEABLE -> . IS NOT NULL
+    (37) NULLEABLE -> . IS NULL
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    IN              shift and go to state 96
+    NOT             shift and go to state 97
+    IGUAL           shift and go to state 98
+    MAYOR           shift and go to state 99
+    MENOR           shift and go to state 100
+    MAYOR_IGUAL     shift and go to state 101
+    MENOR_IGUAL     shift and go to state 102
+    DESIGUAL        shift and go to state 103
+    IS              shift and go to state 104
 
-    COND_W                         shift and go to state 103
-    CONDICION                      shift and go to state 41
+    SUBCONSULTA                    shift and go to state 93
+    SIGNO                          shift and go to state 94
+    NULLEABLE                      shift and go to state 95
 
 state 78
 
-    (15) ALIAS_T -> AS CADENA .
+    (28) COND_W -> PAR_IZQ COND_W OR . COND_W PAR_DER
+    (27) COND_W -> COND_W OR . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    ON              reduce using rule 15 (ALIAS_T -> AS CADENA .)
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 105
+    CONDICION                      shift and go to state 43
 
 state 79
 
-    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON . COND_W
-    (23) COND_W -> . CONDICION
-    (24) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
-    (25) COND_W -> . COND_W AND COND_W
-    (26) COND_W -> . COND_W OR COND_W
-    (27) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
-    (32) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
-    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
-    (34) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
+    (18) JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    CADENA          shift and go to state 42
-    PAR_IZQ         shift and go to state 43
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
-    COND_W                         shift and go to state 104
-    CONDICION                      shift and go to state 41
+    COND_W                         shift and go to state 106
+    CONDICION                      shift and go to state 43
 
 state 80
 
-    (5) CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA . COMILLA
+    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA . ON COND_W
 
-    COMILLA         shift and go to state 105
+    ON              shift and go to state 107
 
 
 state 81
 
-    (8) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .
+    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    AS              reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    IGUAL           reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR           reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR           reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR_IGUAL     reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR_IGUAL     reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    DESIGUAL        reduce using rule 8 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 108
+    CONDICION                      shift and go to state 43
 
 state 82
 
-    (9) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .
+    (21) JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA . ON COND_W
 
-    AS              reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    IGUAL           reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR           reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR           reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR_IGUAL     reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR_IGUAL     reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    DESIGUAL        reduce using rule 9 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    ON              shift and go to state 109
 
 
 state 83
 
-    (10) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .
+    (6) CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA . COMILLA
 
-    AS              reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    IGUAL           reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR           reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR           reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MAYOR_IGUAL     reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    MENOR_IGUAL     reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
-    DESIGUAL        reduce using rule 10 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    COMILLA         shift and go to state 110
 
 
 state 84
 
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA . PAR_DER
+    (9) FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .
 
-    PAR_DER         shift and go to state 106
+    AS              reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    IGUAL           reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR           reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR           reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR_IGUAL     reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR_IGUAL     reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    DESIGUAL        reduce using rule 9 (FUNC_RESUMEN -> MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
 
 
 state 85
 
-    (49) ORDER_BY -> ORDER BY CAMPOS_O .
+    (10) FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .
 
-    $end            reduce using rule 49 (ORDER_BY -> ORDER BY CAMPOS_O .)
-    PAR_DER         reduce using rule 49 (ORDER_BY -> ORDER BY CAMPOS_O .)
+    AS              reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    IGUAL           reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR           reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR           reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR_IGUAL     reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR_IGUAL     reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    DESIGUAL        reduce using rule 10 (FUNC_RESUMEN -> MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
 
 
 state 86
 
-    (51) CAMPOS_O -> CADENA . PUNTO CADENA ORDEN COMA CAMPOS_O
-    (52) CAMPOS_O -> CADENA . PUNTO CADENA ORDEN
+    (11) FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .
 
-    PUNTO           shift and go to state 107
+    AS              reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    IGUAL           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MAYOR_IGUAL     reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    MENOR_IGUAL     reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
+    DESIGUAL        reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER .)
 
 
 state 87
 
-    (43) GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA . PAR_DER
 
-    ORDER           reduce using rule 43 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
-    $end            reduce using rule 43 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
-    PAR_DER         reduce using rule 43 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
+    PAR_DER         shift and go to state 111
 
 
 state 88
 
-    (47) HAVING_ -> HAVING . FUNC_RESUMEN SIGNO VALOR
-    (8) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (9) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (10) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
-    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
+    (50) ORDER_BY -> ORDER BY CAMPOS_O .
 
-    MIN             shift and go to state 10
-    MAX             shift and go to state 11
-    COUNT           shift and go to state 12
+    $end            reduce using rule 50 (ORDER_BY -> ORDER BY CAMPOS_O .)
+    PAR_DER         reduce using rule 50 (ORDER_BY -> ORDER BY CAMPOS_O .)
 
-    FUNC_RESUMEN                   shift and go to state 108
 
 state 89
 
-    (45) CAMPOS_G -> CADENA PUNTO . CADENA COMA CAMPOS_G
-    (46) CAMPOS_G -> CADENA PUNTO . CADENA
+    (52) CAMPOS_O -> CADENA . PUNTO CADENA ORDEN COMA CAMPOS_O
+    (53) CAMPOS_O -> CADENA . PUNTO CADENA ORDEN
 
-    CADENA          shift and go to state 109
+    PUNTO           shift and go to state 112
 
 
 state 90
 
-    (24) COND_W -> CADENA PUNTO CADENA SUBCONSULTA .
+    (44) GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .
 
-    AND             reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    OR              reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    GROUP           reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    ORDER           reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    $end            reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    PAR_DER         reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    INNER           reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    LEFT            reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
-    WHERE           reduce using rule 24 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    ORDER           reduce using rule 44 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
+    $end            reduce using rule 44 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
+    PAR_DER         reduce using rule 44 (GROUP_BY -> GROUP BY CAMPOS_G HAVING_ .)
 
 
 state 91
 
-    (32) CONDICION -> CADENA PUNTO CADENA SIGNO . VALOR
-    (33) CONDICION -> CADENA PUNTO CADENA SIGNO . CADENA PUNTO CADENA
-    (30) VALOR -> . NUMERO
-    (31) VALOR -> . COMILLA CADENA COMILLA
+    (48) HAVING_ -> HAVING . FUNC_RESUMEN SIGNO VALOR
+    (9) FUNC_RESUMEN -> . MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (10) FUNC_RESUMEN -> . MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (11) FUNC_RESUMEN -> . COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
+    (12) FUNC_RESUMEN -> . COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER
 
-    CADENA          shift and go to state 110
-    NUMERO          shift and go to state 112
-    COMILLA         shift and go to state 113
+    MIN             shift and go to state 11
+    MAX             shift and go to state 12
+    COUNT           shift and go to state 13
 
-    VALOR                          shift and go to state 111
+    FUNC_RESUMEN                   shift and go to state 113
 
 state 92
 
-    (34) CONDICION -> CADENA PUNTO CADENA NULLEABLE .
+    (46) CAMPOS_G -> CADENA PUNTO . CADENA COMA CAMPOS_G
+    (47) CAMPOS_G -> CADENA PUNTO . CADENA
 
-    AND             reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    OR              reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    GROUP           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    ORDER           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    $end            reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    PAR_DER         reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    INNER           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    LEFT            reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
-    WHERE           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    CADENA          shift and go to state 114
 
 
 state 93
 
-    (28) SUBCONSULTA -> IN . PAR_IZQ S PAR_DER
+    (25) COND_W -> CADENA PUNTO CADENA SUBCONSULTA .
 
-    PAR_IZQ         shift and go to state 114
+    AND             reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    OR              reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    GROUP           reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    ORDER           reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    $end            reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    PAR_DER         reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    INNER           reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    LEFT            reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
+    WHERE           reduce using rule 25 (COND_W -> CADENA PUNTO CADENA SUBCONSULTA .)
 
 
 state 94
 
-    (29) SUBCONSULTA -> NOT . IN PAR_IZQ S PAR_DER
+    (33) CONDICION -> CADENA PUNTO CADENA SIGNO . VALOR
+    (34) CONDICION -> CADENA PUNTO CADENA SIGNO . CADENA PUNTO CADENA
+    (31) VALOR -> . NUMERO
+    (32) VALOR -> . COMILLA CADENA COMILLA
 
-    IN              shift and go to state 115
+    CADENA          shift and go to state 115
+    NUMERO          shift and go to state 117
+    COMILLA         shift and go to state 118
 
+    VALOR                          shift and go to state 116
 
 state 95
 
-    (37) SIGNO -> IGUAL .
+    (35) CONDICION -> CADENA PUNTO CADENA NULLEABLE .
 
-    CADENA          reduce using rule 37 (SIGNO -> IGUAL .)
-    NUMERO          reduce using rule 37 (SIGNO -> IGUAL .)
-    COMILLA         reduce using rule 37 (SIGNO -> IGUAL .)
+    AND             reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    OR              reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    GROUP           reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    ORDER           reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    $end            reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    PAR_DER         reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    INNER           reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    LEFT            reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
+    WHERE           reduce using rule 35 (CONDICION -> CADENA PUNTO CADENA NULLEABLE .)
 
 
 state 96
 
-    (38) SIGNO -> MAYOR .
+    (29) SUBCONSULTA -> IN . PAR_IZQ S PAR_DER
 
-    CADENA          reduce using rule 38 (SIGNO -> MAYOR .)
-    NUMERO          reduce using rule 38 (SIGNO -> MAYOR .)
-    COMILLA         reduce using rule 38 (SIGNO -> MAYOR .)
+    PAR_IZQ         shift and go to state 119
 
 
 state 97
 
-    (39) SIGNO -> MENOR .
+    (30) SUBCONSULTA -> NOT . IN PAR_IZQ S PAR_DER
 
-    CADENA          reduce using rule 39 (SIGNO -> MENOR .)
-    NUMERO          reduce using rule 39 (SIGNO -> MENOR .)
-    COMILLA         reduce using rule 39 (SIGNO -> MENOR .)
+    IN              shift and go to state 120
 
 
 state 98
 
-    (40) SIGNO -> MAYOR_IGUAL .
+    (38) SIGNO -> IGUAL .
 
-    CADENA          reduce using rule 40 (SIGNO -> MAYOR_IGUAL .)
-    NUMERO          reduce using rule 40 (SIGNO -> MAYOR_IGUAL .)
-    COMILLA         reduce using rule 40 (SIGNO -> MAYOR_IGUAL .)
+    CADENA          reduce using rule 38 (SIGNO -> IGUAL .)
+    NUMERO          reduce using rule 38 (SIGNO -> IGUAL .)
+    COMILLA         reduce using rule 38 (SIGNO -> IGUAL .)
 
 
 state 99
 
-    (41) SIGNO -> MENOR_IGUAL .
+    (39) SIGNO -> MAYOR .
 
-    CADENA          reduce using rule 41 (SIGNO -> MENOR_IGUAL .)
-    NUMERO          reduce using rule 41 (SIGNO -> MENOR_IGUAL .)
-    COMILLA         reduce using rule 41 (SIGNO -> MENOR_IGUAL .)
+    CADENA          reduce using rule 39 (SIGNO -> MAYOR .)
+    NUMERO          reduce using rule 39 (SIGNO -> MAYOR .)
+    COMILLA         reduce using rule 39 (SIGNO -> MAYOR .)
 
 
 state 100
 
-    (42) SIGNO -> DESIGUAL .
+    (40) SIGNO -> MENOR .
 
-    CADENA          reduce using rule 42 (SIGNO -> DESIGUAL .)
-    NUMERO          reduce using rule 42 (SIGNO -> DESIGUAL .)
-    COMILLA         reduce using rule 42 (SIGNO -> DESIGUAL .)
+    CADENA          reduce using rule 40 (SIGNO -> MENOR .)
+    NUMERO          reduce using rule 40 (SIGNO -> MENOR .)
+    COMILLA         reduce using rule 40 (SIGNO -> MENOR .)
 
 
 state 101
 
-    (35) NULLEABLE -> IS . NOT NULL
-    (36) NULLEABLE -> IS . NULL
+    (41) SIGNO -> MAYOR_IGUAL .
 
-    NOT             shift and go to state 116
-    NULL            shift and go to state 117
+    CADENA          reduce using rule 41 (SIGNO -> MAYOR_IGUAL .)
+    NUMERO          reduce using rule 41 (SIGNO -> MAYOR_IGUAL .)
+    COMILLA         reduce using rule 41 (SIGNO -> MAYOR_IGUAL .)
 
 
 state 102
 
-    (27) COND_W -> PAR_IZQ COND_W OR COND_W . PAR_DER
-    (26) COND_W -> COND_W OR COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (42) SIGNO -> MENOR_IGUAL .
 
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-    PAR_DER         shift and go to state 118
-    AND             shift and go to state 56
-    OR              shift and go to state 57
-
-  ! OR              [ reduce using rule 26 (COND_W -> COND_W OR COND_W .) ]
-  ! AND             [ reduce using rule 26 (COND_W -> COND_W OR COND_W .) ]
+    CADENA          reduce using rule 42 (SIGNO -> MENOR_IGUAL .)
+    NUMERO          reduce using rule 42 (SIGNO -> MENOR_IGUAL .)
+    COMILLA         reduce using rule 42 (SIGNO -> MENOR_IGUAL .)
 
 
 state 103
 
-    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (43) SIGNO -> DESIGUAL .
 
-    INNER           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    LEFT            reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    WHERE           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    GROUP           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    ORDER           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    $end            reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    PAR_DER         reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA ALIAS_T ON COND_W .)
-    AND             shift and go to state 56
-    OR              shift and go to state 57
+    CADENA          reduce using rule 43 (SIGNO -> DESIGUAL .)
+    NUMERO          reduce using rule 43 (SIGNO -> DESIGUAL .)
+    COMILLA         reduce using rule 43 (SIGNO -> DESIGUAL .)
 
 
 state 104
 
-    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .
-    (25) COND_W -> COND_W . AND COND_W
-    (26) COND_W -> COND_W . OR COND_W
+    (36) NULLEABLE -> IS . NOT NULL
+    (37) NULLEABLE -> IS . NULL
 
-    INNER           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    LEFT            reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    WHERE           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    GROUP           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    ORDER           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    $end            reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    PAR_DER         reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA ALIAS_T ON COND_W .)
-    AND             shift and go to state 56
-    OR              shift and go to state 57
+    NOT             shift and go to state 121
+    NULL            shift and go to state 122
 
 
 state 105
 
-    (5) CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .
+    (28) COND_W -> PAR_IZQ COND_W OR COND_W . PAR_DER
+    (27) COND_W -> COND_W OR COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    COMA            reduce using rule 5 (CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .)
-    FROM            reduce using rule 5 (CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .)
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PAR_DER         shift and go to state 123
+    AND             shift and go to state 58
+    OR              shift and go to state 59
+
+  ! OR              [ reduce using rule 27 (COND_W -> COND_W OR COND_W .) ]
+  ! AND             [ reduce using rule 27 (COND_W -> COND_W OR COND_W .) ]
 
 
 state 106
 
-    (11) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .
+    (18) JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    AS              reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    IGUAL           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    MAYOR           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    MENOR           reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    MAYOR_IGUAL     reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    MENOR_IGUAL     reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
-    DESIGUAL        reduce using rule 11 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    INNER           reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    LEFT            reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    WHERE           reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    GROUP           reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    ORDER           reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    $end            reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    PAR_DER         reduce using rule 18 (JOIN_INNER_LEFT -> INNER JOIN CADENA CADENA ON COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
 
 state 107
 
-    (51) CAMPOS_O -> CADENA PUNTO . CADENA ORDEN COMA CAMPOS_O
-    (52) CAMPOS_O -> CADENA PUNTO . CADENA ORDEN
+    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    CADENA          shift and go to state 119
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 124
+    CONDICION                      shift and go to state 43
 
 state 108
 
-    (47) HAVING_ -> HAVING FUNC_RESUMEN . SIGNO VALOR
-    (37) SIGNO -> . IGUAL
-    (38) SIGNO -> . MAYOR
-    (39) SIGNO -> . MENOR
-    (40) SIGNO -> . MAYOR_IGUAL
-    (41) SIGNO -> . MENOR_IGUAL
-    (42) SIGNO -> . DESIGUAL
+    (20) JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    IGUAL           shift and go to state 95
-    MAYOR           shift and go to state 96
-    MENOR           shift and go to state 97
-    MAYOR_IGUAL     shift and go to state 98
-    MENOR_IGUAL     shift and go to state 99
-    DESIGUAL        shift and go to state 100
+    INNER           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    LEFT            reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    WHERE           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    GROUP           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    ORDER           reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    $end            reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    PAR_DER         reduce using rule 20 (JOIN_INNER_LEFT -> LEFT JOIN CADENA CADENA ON COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
-    SIGNO                          shift and go to state 120
 
 state 109
 
-    (45) CAMPOS_G -> CADENA PUNTO CADENA . COMA CAMPOS_G
-    (46) CAMPOS_G -> CADENA PUNTO CADENA .
+    (21) JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON . COND_W
+    (24) COND_W -> . CONDICION
+    (25) COND_W -> . CADENA PUNTO CADENA SUBCONSULTA
+    (26) COND_W -> . COND_W AND COND_W
+    (27) COND_W -> . COND_W OR COND_W
+    (28) COND_W -> . PAR_IZQ COND_W OR COND_W PAR_DER
+    (33) CONDICION -> . CADENA PUNTO CADENA SIGNO VALOR
+    (34) CONDICION -> . CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
+    (35) CONDICION -> . CADENA PUNTO CADENA NULLEABLE
 
-    COMA            shift and go to state 121
-    HAVING          reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA .)
-    ORDER           reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA .)
-    $end            reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA .)
-    PAR_DER         reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA .)
+    CADENA          shift and go to state 44
+    PAR_IZQ         shift and go to state 45
 
+    COND_W                         shift and go to state 125
+    CONDICION                      shift and go to state 43
 
 state 110
 
-    (33) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA . PUNTO CADENA
+    (6) CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .
 
-    PUNTO           shift and go to state 122
+    COMA            reduce using rule 6 (CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .)
+    FROM            reduce using rule 6 (CAMPO -> CADENA PUNTO CADENA AS COMILLA CADENA COMILLA .)
 
 
 state 111
 
-    (32) CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .
+    (12) FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .
 
-    AND             reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    OR              reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    GROUP           reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    ORDER           reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    $end            reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    PAR_DER         reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    INNER           reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    LEFT            reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
-    WHERE           reduce using rule 32 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    AS              reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    IGUAL           reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    MAYOR           reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    MENOR           reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    MAYOR_IGUAL     reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    MENOR_IGUAL     reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
+    DESIGUAL        reduce using rule 12 (FUNC_RESUMEN -> COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER .)
 
 
 state 112
 
-    (30) VALOR -> NUMERO .
+    (52) CAMPOS_O -> CADENA PUNTO . CADENA ORDEN COMA CAMPOS_O
+    (53) CAMPOS_O -> CADENA PUNTO . CADENA ORDEN
 
-    AND             reduce using rule 30 (VALOR -> NUMERO .)
-    OR              reduce using rule 30 (VALOR -> NUMERO .)
-    GROUP           reduce using rule 30 (VALOR -> NUMERO .)
-    ORDER           reduce using rule 30 (VALOR -> NUMERO .)
-    $end            reduce using rule 30 (VALOR -> NUMERO .)
-    PAR_DER         reduce using rule 30 (VALOR -> NUMERO .)
-    INNER           reduce using rule 30 (VALOR -> NUMERO .)
-    LEFT            reduce using rule 30 (VALOR -> NUMERO .)
-    WHERE           reduce using rule 30 (VALOR -> NUMERO .)
+    CADENA          shift and go to state 126
 
 
 state 113
 
-    (31) VALOR -> COMILLA . CADENA COMILLA
+    (48) HAVING_ -> HAVING FUNC_RESUMEN . SIGNO VALOR
+    (38) SIGNO -> . IGUAL
+    (39) SIGNO -> . MAYOR
+    (40) SIGNO -> . MENOR
+    (41) SIGNO -> . MAYOR_IGUAL
+    (42) SIGNO -> . MENOR_IGUAL
+    (43) SIGNO -> . DESIGUAL
 
-    CADENA          shift and go to state 123
+    IGUAL           shift and go to state 98
+    MAYOR           shift and go to state 99
+    MENOR           shift and go to state 100
+    MAYOR_IGUAL     shift and go to state 101
+    MENOR_IGUAL     shift and go to state 102
+    DESIGUAL        shift and go to state 103
 
+    SIGNO                          shift and go to state 127
 
 state 114
 
-    (28) SUBCONSULTA -> IN PAR_IZQ . S PAR_DER
-    (1) S -> . SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
-    (2) SELECT_ -> . SELECT CAMPOS
+    (46) CAMPOS_G -> CADENA PUNTO CADENA . COMA CAMPOS_G
+    (47) CAMPOS_G -> CADENA PUNTO CADENA .
 
-    SELECT          shift and go to state 3
+    COMA            shift and go to state 128
+    HAVING          reduce using rule 47 (CAMPOS_G -> CADENA PUNTO CADENA .)
+    ORDER           reduce using rule 47 (CAMPOS_G -> CADENA PUNTO CADENA .)
+    $end            reduce using rule 47 (CAMPOS_G -> CADENA PUNTO CADENA .)
+    PAR_DER         reduce using rule 47 (CAMPOS_G -> CADENA PUNTO CADENA .)
 
-    S                              shift and go to state 124
-    SELECT_                        shift and go to state 2
 
 state 115
 
-    (29) SUBCONSULTA -> NOT IN . PAR_IZQ S PAR_DER
+    (34) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA . PUNTO CADENA
 
-    PAR_IZQ         shift and go to state 125
+    PUNTO           shift and go to state 129
 
 
 state 116
 
-    (35) NULLEABLE -> IS NOT . NULL
+    (33) CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .
 
-    NULL            shift and go to state 126
+    AND             reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    OR              reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    GROUP           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    ORDER           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    $end            reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    PAR_DER         reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    INNER           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    LEFT            reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
+    WHERE           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO VALOR .)
 
 
 state 117
 
-    (36) NULLEABLE -> IS NULL .
+    (31) VALOR -> NUMERO .
 
-    AND             reduce using rule 36 (NULLEABLE -> IS NULL .)
-    OR              reduce using rule 36 (NULLEABLE -> IS NULL .)
-    GROUP           reduce using rule 36 (NULLEABLE -> IS NULL .)
-    ORDER           reduce using rule 36 (NULLEABLE -> IS NULL .)
-    $end            reduce using rule 36 (NULLEABLE -> IS NULL .)
-    PAR_DER         reduce using rule 36 (NULLEABLE -> IS NULL .)
-    INNER           reduce using rule 36 (NULLEABLE -> IS NULL .)
-    LEFT            reduce using rule 36 (NULLEABLE -> IS NULL .)
-    WHERE           reduce using rule 36 (NULLEABLE -> IS NULL .)
+    AND             reduce using rule 31 (VALOR -> NUMERO .)
+    OR              reduce using rule 31 (VALOR -> NUMERO .)
+    GROUP           reduce using rule 31 (VALOR -> NUMERO .)
+    ORDER           reduce using rule 31 (VALOR -> NUMERO .)
+    $end            reduce using rule 31 (VALOR -> NUMERO .)
+    PAR_DER         reduce using rule 31 (VALOR -> NUMERO .)
+    INNER           reduce using rule 31 (VALOR -> NUMERO .)
+    LEFT            reduce using rule 31 (VALOR -> NUMERO .)
+    WHERE           reduce using rule 31 (VALOR -> NUMERO .)
 
 
 state 118
 
-    (27) COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .
+    (32) VALOR -> COMILLA . CADENA COMILLA
 
-    AND             reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    OR              reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    GROUP           reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    ORDER           reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    $end            reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    PAR_DER         reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    INNER           reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    LEFT            reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
-    WHERE           reduce using rule 27 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    CADENA          shift and go to state 130
 
 
 state 119
 
-    (51) CAMPOS_O -> CADENA PUNTO CADENA . ORDEN COMA CAMPOS_O
-    (52) CAMPOS_O -> CADENA PUNTO CADENA . ORDEN
-    (53) ORDEN -> . ASC
-    (54) ORDEN -> . DESC
-    (55) ORDEN -> .
+    (29) SUBCONSULTA -> IN PAR_IZQ . S PAR_DER
+    (1) S -> . SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
+    (2) SELECT_ -> . SELECT CAMPOS
+    (3) SELECT_ -> . SELECT DISTINCT CAMPOS
 
-    ASC             shift and go to state 128
-    DESC            shift and go to state 129
-    COMA            reduce using rule 55 (ORDEN -> .)
-    $end            reduce using rule 55 (ORDEN -> .)
-    PAR_DER         reduce using rule 55 (ORDEN -> .)
+    SELECT          shift and go to state 3
 
-    ORDEN                          shift and go to state 127
+    S                              shift and go to state 131
+    SELECT_                        shift and go to state 2
 
 state 120
 
-    (47) HAVING_ -> HAVING FUNC_RESUMEN SIGNO . VALOR
-    (30) VALOR -> . NUMERO
-    (31) VALOR -> . COMILLA CADENA COMILLA
+    (30) SUBCONSULTA -> NOT IN . PAR_IZQ S PAR_DER
 
-    NUMERO          shift and go to state 112
-    COMILLA         shift and go to state 113
+    PAR_IZQ         shift and go to state 132
 
-    VALOR                          shift and go to state 130
 
 state 121
 
-    (45) CAMPOS_G -> CADENA PUNTO CADENA COMA . CAMPOS_G
-    (45) CAMPOS_G -> . CADENA PUNTO CADENA COMA CAMPOS_G
-    (46) CAMPOS_G -> . CADENA PUNTO CADENA
+    (36) NULLEABLE -> IS NOT . NULL
 
-    CADENA          shift and go to state 72
+    NULL            shift and go to state 133
 
-    CAMPOS_G                       shift and go to state 131
 
 state 122
 
-    (33) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO . CADENA
+    (37) NULLEABLE -> IS NULL .
 
-    CADENA          shift and go to state 132
+    AND             reduce using rule 37 (NULLEABLE -> IS NULL .)
+    OR              reduce using rule 37 (NULLEABLE -> IS NULL .)
+    GROUP           reduce using rule 37 (NULLEABLE -> IS NULL .)
+    ORDER           reduce using rule 37 (NULLEABLE -> IS NULL .)
+    $end            reduce using rule 37 (NULLEABLE -> IS NULL .)
+    PAR_DER         reduce using rule 37 (NULLEABLE -> IS NULL .)
+    INNER           reduce using rule 37 (NULLEABLE -> IS NULL .)
+    LEFT            reduce using rule 37 (NULLEABLE -> IS NULL .)
+    WHERE           reduce using rule 37 (NULLEABLE -> IS NULL .)
 
 
 state 123
 
-    (31) VALOR -> COMILLA CADENA . COMILLA
+    (28) COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .
 
-    COMILLA         shift and go to state 133
+    AND             reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    OR              reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    GROUP           reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    ORDER           reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    $end            reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    PAR_DER         reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    INNER           reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    LEFT            reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
+    WHERE           reduce using rule 28 (COND_W -> PAR_IZQ COND_W OR COND_W PAR_DER .)
 
 
 state 124
 
-    (28) SUBCONSULTA -> IN PAR_IZQ S . PAR_DER
+    (19) JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    PAR_DER         shift and go to state 134
+    INNER           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    LEFT            reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    WHERE           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    GROUP           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    ORDER           reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    $end            reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    PAR_DER         reduce using rule 19 (JOIN_INNER_LEFT -> INNER JOIN CADENA AS CADENA ON COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
 
 state 125
 
-    (29) SUBCONSULTA -> NOT IN PAR_IZQ . S PAR_DER
-    (1) S -> . SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
-    (2) SELECT_ -> . SELECT CAMPOS
+    (21) JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .
+    (26) COND_W -> COND_W . AND COND_W
+    (27) COND_W -> COND_W . OR COND_W
 
-    SELECT          shift and go to state 3
+    INNER           reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    LEFT            reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    WHERE           reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    GROUP           reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    ORDER           reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    $end            reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    PAR_DER         reduce using rule 21 (JOIN_INNER_LEFT -> LEFT JOIN CADENA AS CADENA ON COND_W .)
+    AND             shift and go to state 58
+    OR              shift and go to state 59
 
-    S                              shift and go to state 135
-    SELECT_                        shift and go to state 2
 
 state 126
 
-    (35) NULLEABLE -> IS NOT NULL .
+    (52) CAMPOS_O -> CADENA PUNTO CADENA . ORDEN COMA CAMPOS_O
+    (53) CAMPOS_O -> CADENA PUNTO CADENA . ORDEN
+    (54) ORDEN -> . ASC
+    (55) ORDEN -> . DESC
+    (56) ORDEN -> .
 
-    AND             reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    OR              reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    GROUP           reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    ORDER           reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    $end            reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    PAR_DER         reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    INNER           reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    LEFT            reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
-    WHERE           reduce using rule 35 (NULLEABLE -> IS NOT NULL .)
+    ASC             shift and go to state 135
+    DESC            shift and go to state 136
+    COMA            reduce using rule 56 (ORDEN -> .)
+    $end            reduce using rule 56 (ORDEN -> .)
+    PAR_DER         reduce using rule 56 (ORDEN -> .)
 
+    ORDEN                          shift and go to state 134
 
 state 127
 
-    (51) CAMPOS_O -> CADENA PUNTO CADENA ORDEN . COMA CAMPOS_O
-    (52) CAMPOS_O -> CADENA PUNTO CADENA ORDEN .
+    (48) HAVING_ -> HAVING FUNC_RESUMEN SIGNO . VALOR
+    (31) VALOR -> . NUMERO
+    (32) VALOR -> . COMILLA CADENA COMILLA
 
-    COMA            shift and go to state 136
-    $end            reduce using rule 52 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN .)
-    PAR_DER         reduce using rule 52 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN .)
+    NUMERO          shift and go to state 117
+    COMILLA         shift and go to state 118
 
+    VALOR                          shift and go to state 137
 
 state 128
 
-    (53) ORDEN -> ASC .
+    (46) CAMPOS_G -> CADENA PUNTO CADENA COMA . CAMPOS_G
+    (46) CAMPOS_G -> . CADENA PUNTO CADENA COMA CAMPOS_G
+    (47) CAMPOS_G -> . CADENA PUNTO CADENA
 
-    COMA            reduce using rule 53 (ORDEN -> ASC .)
-    $end            reduce using rule 53 (ORDEN -> ASC .)
-    PAR_DER         reduce using rule 53 (ORDEN -> ASC .)
+    CADENA          shift and go to state 74
 
+    CAMPOS_G                       shift and go to state 138
 
 state 129
 
-    (54) ORDEN -> DESC .
+    (34) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO . CADENA
 
-    COMA            reduce using rule 54 (ORDEN -> DESC .)
-    $end            reduce using rule 54 (ORDEN -> DESC .)
-    PAR_DER         reduce using rule 54 (ORDEN -> DESC .)
+    CADENA          shift and go to state 139
 
 
 state 130
 
-    (47) HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .
+    (32) VALOR -> COMILLA CADENA . COMILLA
 
-    ORDER           reduce using rule 47 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
-    $end            reduce using rule 47 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
-    PAR_DER         reduce using rule 47 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
+    COMILLA         shift and go to state 140
 
 
 state 131
 
-    (45) CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .
+    (29) SUBCONSULTA -> IN PAR_IZQ S . PAR_DER
 
-    HAVING          reduce using rule 45 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
-    ORDER           reduce using rule 45 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
-    $end            reduce using rule 45 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
-    PAR_DER         reduce using rule 45 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
+    PAR_DER         shift and go to state 141
 
 
 state 132
 
-    (33) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .
+    (30) SUBCONSULTA -> NOT IN PAR_IZQ . S PAR_DER
+    (1) S -> . SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY
+    (2) SELECT_ -> . SELECT CAMPOS
+    (3) SELECT_ -> . SELECT DISTINCT CAMPOS
 
-    AND             reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    OR              reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    GROUP           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    ORDER           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    $end            reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    PAR_DER         reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    INNER           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    LEFT            reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
-    WHERE           reduce using rule 33 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    SELECT          shift and go to state 3
 
+    S                              shift and go to state 142
+    SELECT_                        shift and go to state 2
 
 state 133
 
-    (31) VALOR -> COMILLA CADENA COMILLA .
+    (36) NULLEABLE -> IS NOT NULL .
 
-    AND             reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    OR              reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    GROUP           reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    ORDER           reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    $end            reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    PAR_DER         reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    INNER           reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    LEFT            reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
-    WHERE           reduce using rule 31 (VALOR -> COMILLA CADENA COMILLA .)
+    AND             reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    OR              reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    GROUP           reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    ORDER           reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    $end            reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    PAR_DER         reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    INNER           reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    LEFT            reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
+    WHERE           reduce using rule 36 (NULLEABLE -> IS NOT NULL .)
 
 
 state 134
 
-    (28) SUBCONSULTA -> IN PAR_IZQ S PAR_DER .
+    (52) CAMPOS_O -> CADENA PUNTO CADENA ORDEN . COMA CAMPOS_O
+    (53) CAMPOS_O -> CADENA PUNTO CADENA ORDEN .
 
-    AND             reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    OR              reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    GROUP           reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    ORDER           reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    $end            reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    PAR_DER         reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    INNER           reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    LEFT            reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
-    WHERE           reduce using rule 28 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    COMA            shift and go to state 143
+    $end            reduce using rule 53 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN .)
+    PAR_DER         reduce using rule 53 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN .)
 
 
 state 135
 
-    (29) SUBCONSULTA -> NOT IN PAR_IZQ S . PAR_DER
+    (54) ORDEN -> ASC .
 
-    PAR_DER         shift and go to state 137
+    COMA            reduce using rule 54 (ORDEN -> ASC .)
+    $end            reduce using rule 54 (ORDEN -> ASC .)
+    PAR_DER         reduce using rule 54 (ORDEN -> ASC .)
 
 
 state 136
 
-    (51) CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA . CAMPOS_O
-    (51) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
-    (52) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN
+    (55) ORDEN -> DESC .
 
-    CADENA          shift and go to state 86
+    COMA            reduce using rule 55 (ORDEN -> DESC .)
+    $end            reduce using rule 55 (ORDEN -> DESC .)
+    PAR_DER         reduce using rule 55 (ORDEN -> DESC .)
 
-    CAMPOS_O                       shift and go to state 138
 
 state 137
 
-    (29) SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .
+    (48) HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .
 
-    AND             reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    OR              reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    GROUP           reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    ORDER           reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    $end            reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    PAR_DER         reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    INNER           reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    LEFT            reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
-    WHERE           reduce using rule 29 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    ORDER           reduce using rule 48 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
+    $end            reduce using rule 48 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
+    PAR_DER         reduce using rule 48 (HAVING_ -> HAVING FUNC_RESUMEN SIGNO VALOR .)
 
 
 state 138
 
-    (51) CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .
+    (46) CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .
 
-    $end            reduce using rule 51 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .)
-    PAR_DER         reduce using rule 51 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .)
+    HAVING          reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
+    ORDER           reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
+    $end            reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
+    PAR_DER         reduce using rule 46 (CAMPOS_G -> CADENA PUNTO CADENA COMA CAMPOS_G .)
+
+
+state 139
+
+    (34) CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .
+
+    AND             reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    OR              reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    GROUP           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    ORDER           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    $end            reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    PAR_DER         reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    INNER           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    LEFT            reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+    WHERE           reduce using rule 34 (CONDICION -> CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA .)
+
+
+state 140
+
+    (32) VALOR -> COMILLA CADENA COMILLA .
+
+    AND             reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    OR              reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    GROUP           reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    ORDER           reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    $end            reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    PAR_DER         reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    INNER           reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    LEFT            reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+    WHERE           reduce using rule 32 (VALOR -> COMILLA CADENA COMILLA .)
+
+
+state 141
+
+    (29) SUBCONSULTA -> IN PAR_IZQ S PAR_DER .
+
+    AND             reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    OR              reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    GROUP           reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    ORDER           reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    $end            reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    PAR_DER         reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    INNER           reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    LEFT            reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+    WHERE           reduce using rule 29 (SUBCONSULTA -> IN PAR_IZQ S PAR_DER .)
+
+
+state 142
+
+    (30) SUBCONSULTA -> NOT IN PAR_IZQ S . PAR_DER
+
+    PAR_DER         shift and go to state 144
+
+
+state 143
+
+    (52) CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA . CAMPOS_O
+    (52) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
+    (53) CAMPOS_O -> . CADENA PUNTO CADENA ORDEN
+
+    CADENA          shift and go to state 89
+
+    CAMPOS_O                       shift and go to state 145
+
+state 144
+
+    (30) SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .
+
+    AND             reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    OR              reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    GROUP           reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    ORDER           reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    $end            reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    PAR_DER         reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    INNER           reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    LEFT            reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+    WHERE           reduce using rule 30 (SUBCONSULTA -> NOT IN PAR_IZQ S PAR_DER .)
+
+
+state 145
+
+    (52) CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .
+
+    $end            reduce using rule 52 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .)
+    PAR_DER         reduce using rule 52 (CAMPOS_O -> CADENA PUNTO CADENA ORDEN COMA CAMPOS_O .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for AND in state 73 resolved as shift
-WARNING: shift/reduce conflict for OR in state 73 resolved as shift
-WARNING: shift/reduce conflict for AND in state 74 resolved as shift
-WARNING: shift/reduce conflict for OR in state 74 resolved as shift
-WARNING: shift/reduce conflict for AND in state 102 resolved as shift
-WARNING: shift/reduce conflict for OR in state 102 resolved as shift
+WARNING: shift/reduce conflict for AND in state 75 resolved as shift
+WARNING: shift/reduce conflict for OR in state 75 resolved as shift
+WARNING: shift/reduce conflict for AND in state 76 resolved as shift
+WARNING: shift/reduce conflict for OR in state 76 resolved as shift
+WARNING: shift/reduce conflict for AND in state 105 resolved as shift
+WARNING: shift/reduce conflict for OR in state 105 resolved as shift

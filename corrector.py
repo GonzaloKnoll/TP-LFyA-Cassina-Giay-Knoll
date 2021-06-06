@@ -22,7 +22,12 @@ samples = [
             LEFT JOIN phones_numbers AS p ON
                 c.id = p.customer_id
         ''', {'customers': ['first_name', 'id', 'last_name'],
-              'phones_numbers': ['customer_id', 'number']})
+              'phones_numbers': ['customer_id', 'number']}),
+    ('''SELECT V.NROFACTURA, VENTAS.MONTO
+        FROM VENTAS V
+        WHERE V.MARCA_PAGO_CONTADO IS NULL 
+        AND V.NROFACTURA NOT IN (SELECT FA.NROFACTURA FROM FACTURAS_ADEUDADAS FA)''',
+		{'VENTAS': ['MARCA_PAGO_CONTADO', 'NROFACTURA'],'FACTURAS_ADEUDADAS': ['NROFACTURA']})
     ]
 
 for ix, sample in enumerate(samples):

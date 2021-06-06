@@ -69,12 +69,13 @@ def t_newline(t):
     r"""\n+"""
     t.lexer.lineno += len(t.value)
 
-def t_numero(t):
+def t_NUMERO(t):
     r'\d+'
+    t.type = keywords.get(t.value, 'NUMERO')
     t.value = int(t.value)
     return t
 
-def t_cadena(t):
+def t_CADENA(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
     t.type = keywords.get(t.value, 'CADENA')
     return t
@@ -85,11 +86,12 @@ diccionarioTablas = {}
 diccionarioColumnas = {}
 
 def p_S_consulta_completa(p):
-    '''S : SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY''' # DISTINCT???
+    '''S : SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY'''
     
 
 def p_SELECT_(p):
-    '''SELECT_ : SELECT CAMPOS'''
+    '''SELECT_ : SELECT CAMPOS
+        | SELECT DISTINCT CAMPOS'''
 
 
 def p_CAMPOS(p):
@@ -103,25 +105,13 @@ def p_CAMPO(p):
         | FUNC_RESUMEN AS COMILLA CADENA COMILLA'''
     llave = p[1]
     if llave in diccionarioColumnas:
-        if len(p)==8: 
-            campo = p[6] 
-            if campo not in diccionarioColumnas[llave]:
-                diccionarioColumnas[llave].append(campo)
-        elif len(p)==4:
+        if len(p)!=6:
             campo = p[3] 
             if campo not in diccionarioColumnas[llave]:
                 diccionarioColumnas[llave].append(campo)
-        elif len(p)==6: # funcion de resumen REVISAR!!!!!!
-            campo = p[4] 
-            if campo not in diccionarioColumnas[llave]:
-                diccionarioColumnas[llave].append(campo)
     else:
-        if len(p)==8:
-            diccionarioColumnas.setdefault(p[1], [p[6]])
-        elif len(p)==4:
-            diccionarioColumnas.setdefault(p[1], [p[3]])
-        elif len(p)==6:
-            diccionarioColumnas.setdefault('nombre tabla', [p[4]])
+        if len(p)!=6:
+            diccionarioColumnas[llave]=[p[3]]
     print('p_CAMPO', diccionarioColumnas)
     
 def p_FUNC_RESUMEN(p):
@@ -129,6 +119,25 @@ def p_FUNC_RESUMEN(p):
         | MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
         | COUNT PAR_IZQ CADENA PUNTO CADENA PAR_DER
         | COUNT PAR_IZQ DISTINCT CADENA PUNTO CADENA PAR_DER'''
+    llave = ''
+    if len(p)<8:
+        llave = p[3]
+    else:
+        llave = p[4]
+    if llave in diccionarioColumnas:
+        if len(p)==7: 
+            campo = p[5] 
+            if campo not in diccionarioColumnas[llave]:
+                diccionarioColumnas[llave].append(campo)
+        elif len(p)==8:
+            campo = p[6] 
+            if campo not in diccionarioColumnas[llave]:
+                diccionarioColumnas[llave].append(campo)
+    else:
+        if len(p)==7:
+            diccionarioColumnas[llave]=[p[5]]
+        elif len(p)==8:
+            diccionarioColumnas[llave]=[p[6]]
 
 def p_FROM_(p):
     '''FROM_ : FROM CADENA CADENA
@@ -136,25 +145,29 @@ def p_FROM_(p):
         | FROM CADENA
     '''
     if len(p)==4:
-        diccionarioTablas.setdefault(p[2],p[3])
+        diccionarioTablas[p[2]]=p[3]
     elif len(p)==5:
-        diccionarioTablas.setdefault(p[2],p[4])
+        diccionarioTablas[p[2]]=p[4]
     elif len(p)==3: 
         diccionarioTablas.setdefault(p[2])
-    print('p_FROM_', diccionarioTablas)
+    
 
-def p_ALIAS_T(p):
-    '''ALIAS_T : AS CADENA
-        | CADENA'''
 
 def p_JOIN_(p):
     '''JOIN_ : JOIN_INNER_LEFT JOIN_ 
         | '''
 
 def p_JOIN_INNER_LEFT(p):
-    '''JOIN_INNER_LEFT : INNER JOIN CADENA ALIAS_T ON COND_W
-        | LEFT JOIN CADENA ALIAS_T ON COND_W'''
-
+    '''JOIN_INNER_LEFT : INNER JOIN CADENA CADENA ON COND_W
+        | INNER JOIN CADENA AS CADENA ON COND_W
+        | LEFT JOIN CADENA CADENA ON COND_W
+        | LEFT JOIN CADENA AS CADENA ON COND_W'''
+    llave = p[3]
+    if len(p)==7:
+        diccionarioTablas[llave]=p[4]
+    elif len(p)==8:
+        diccionarioTablas[llave]=p[5]
+    
 def p_WHERE_(p):
     '''WHERE_ : WHERE COND_W
         | '''
@@ -165,6 +178,17 @@ def p_COND_W(p):
         | COND_W AND COND_W
         |  COND_W OR COND_W 
         | PAR_IZQ COND_W OR COND_W PAR_DER'''
+    llave = ''
+    if len(p)==5:
+        llave = p[1]
+    if llave in diccionarioColumnas:
+        if len(p)==5: 
+            campo = p[3] 
+            if campo not in diccionarioColumnas[llave]:
+                diccionarioColumnas[llave].append(campo)
+    else:
+        if len(p)==5:
+            diccionarioColumnas[llave]=[p[3]]
 
 def p_SUBCONSULTA(p):
     '''SUBCONSULTA : IN PAR_IZQ S PAR_DER
@@ -178,7 +202,30 @@ def p_CONDICION(p):
     '''CONDICION : CADENA PUNTO CADENA SIGNO VALOR 
         | CADENA PUNTO CADENA SIGNO CADENA PUNTO CADENA
         |  CADENA PUNTO CADENA NULLEABLE'''
-
+    if len(p)<8:
+        llave = p[1]
+        if llave in diccionarioColumnas:
+            campo = p[3] 
+            if campo not in diccionarioColumnas[llave]:
+                diccionarioColumnas[llave].append(campo)
+        else:
+            diccionarioColumnas[llave]=[p[3]]
+    else:
+        llave1 = p[1]
+        llave2 = p[5] 
+        if llave1 in diccionarioColumnas:
+            campo = p[3] 
+            if campo not in diccionarioColumnas[llave1]:
+                diccionarioColumnas[llave1].append(campo)
+        else:
+            diccionarioColumnas[llave1]=[p[3]]
+        if llave2 in diccionarioColumnas:
+            campo = p[7] 
+            if campo not in diccionarioColumnas[llave2]:
+                diccionarioColumnas[llave2].append(campo)
+        else:
+            diccionarioColumnas[llave2]=[p[7]]
+    
 def p_NULLEABLE(p):
     '''NULLEABLE :  IS NOT NULL
         |  IS NULL'''
@@ -198,6 +245,12 @@ def p_GROUP_BY(p):
 def p_CAMPOS_G(p):
     '''CAMPOS_G :  CADENA PUNTO CADENA COMA CAMPOS_G
         | CADENA PUNTO CADENA'''
+    if p[1] in diccionarioColumnas:
+        campo = p[3] 
+        if campo not in diccionarioColumnas[p[1]]:
+            diccionarioColumnas[p[1]].append(campo)
+    else:
+        diccionarioColumnas[p[1]]=[p[3]]
 
 def p_HAVING_(p):
     '''HAVING_ : HAVING FUNC_RESUMEN SIGNO VALOR
@@ -227,34 +280,45 @@ def p_error(p):
 import ply.yacc as yacc
 
 def parse_select_statement(s):
-    
+    diccionarioColumnas.clear()
+    diccionarioTablas.clear()
     yacc.yacc()
     yacc.parse(s)
+    diccionarioResultado = {}
+    for llaveT in diccionarioTablas:
+        # Control para que no guarde los campos de consultas como: 'select personas.nombre from personas as p'
+        control=''
+        if diccionarioTablas.get(llaveT)!=None:
+            control=diccionarioTablas.get(llaveT)
+        else:
+            control=llaveT
+        for llaveC in diccionarioColumnas:
+            if control==llaveC:
+                diccionarioResultado[llaveT]=sorted(diccionarioColumnas.get(llaveC))
+    return diccionarioResultado
 
-    return diccionarioTablas
-
-if __name__ == '__main__':
-    parser = yacc.yacc()
-    while True:
-        try:
-            s = input('consulta > ')
-        except EOFError:
-            break
-        if not s:
-            continue
-        yacc.parse(s)
+# if __name__ == '__main__':
+#     parser = yacc.yacc()
+#     while True:
+#         try:
+#             s = input('consulta > ')
+#         except EOFError:
+#             break
+#         if not s:
+#             continue
+#         yacc.parse(s)
 
 # ----------------------PRUEBA---------------------------------------------------------------
 
 
-data = '''
-SELECT M.cod_multa, M.nombre FROM Multa M WHERE M.monto<>1000 AND M.nombre='Juan'
-GROUP BY M.cod_multa ORDER BY M.cod_multa ASC
-'''
-lexer.input(data)
+# data = '''
+# SELECT M.cod_multa, M.nombre FROM Multa M WHERE M.monto<>1000 AND M.nombre='Juan'
+# GROUP BY M.cod_multa ORDER BY M.cod_multa ASC
+# '''
+# lexer.input(data)
  
-while True:
-    tok = lexer.token()
-    if not tok: 
-        break
-    print(tok)
+# while True:
+#     tok = lexer.token()
+#     if not tok: 
+#         break
+#     print(tok)
