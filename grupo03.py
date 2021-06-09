@@ -257,9 +257,8 @@ def p_CAMPOS_G(p):
     '''CAMPOS_G :  CADENA PUNTO CADENA COMA CAMPOS_G
         | CADENA PUNTO CADENA'''
     if p[1] in diccionarioColumnas:
-        campo = p[3] 
-        if campo not in diccionarioColumnas[p[1]]:
-            diccionarioColumnas[p[1]].append(campo)
+        if p[3] not in diccionarioColumnas[p[1]]:
+            diccionarioColumnas[p[1]].append(p[3])
     else:
         diccionarioColumnas[p[1]]=[p[3]]
     # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
@@ -275,6 +274,12 @@ def p_ORDER_BY(p):
 def p_CAMPOS_O(p):
     '''CAMPOS_O : CADENA PUNTO CADENA ORDEN COMA CAMPOS_O
         | CADENA PUNTO CADENA ORDEN'''
+    if p[1] in diccionarioColumnas:
+        if p[3] not in diccionarioColumnas[p[1]]:
+            diccionarioColumnas[p[1]].append(p[3])
+    else:
+        diccionarioColumnas[p[1]]=[p[3]]
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
 
 def p_ORDEN(p):
     '''ORDEN : ASC

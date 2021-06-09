@@ -34,6 +34,17 @@ samples = [
         HAVING COUNT(A.patas)>2
         ORDER BY A.nombre DESC''',
         {'Animales': ['cantidad', 'codigo', 'nombre', 'patas'],'Felinos': ['codigo']}),
+    ('''SELECT A.Nombre, MAX(A.Nota) AS 'Nota_Alta', Profesores.Materia
+        FROM Alumnos A
+        LEFT JOIN Profesores ON A.Codigo=Profesores.Codigo 
+        INNER JOIN Universidad AS U ON A.Numero=U.Numero
+        WHERE A.Apellido='Lopez' AND (Profesores.Nombre='Jorge' OR Profesores.Edad>=50)
+        GROUP BY A.Nombre, Profesores.Materia, U.Carrera, Profesores.DNI
+        HAVING MIN(A.Edad)<>20
+        ORDER BY A.Direccion''',
+        {'Alumnos': ['Apellido', 'Codigo', 'Direccion', 'Edad', 'Nombre', 'Nota', 'Numero'],
+        'Profesores': ['Codigo', 'DNI', 'Edad', 'Materia', 'Nombre'],
+        'Universidad': ['Carrera', 'Numero']})
     ]
 
 for ix, sample in enumerate(samples):
