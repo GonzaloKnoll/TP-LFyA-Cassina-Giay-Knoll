@@ -4,7 +4,8 @@ import sys
 
 import ply.lex as lex
 
-keywords = {
+# Definición de tokens y palabras reservadas.
+reservadas = {
     'SELECT':'SELECT',
     'AS':'AS',
     'MIN':'MIN',
@@ -31,7 +32,7 @@ keywords = {
     'DESC':'DESC',
 }
 
-tokens = list(keywords.values()) + [
+tokens = list(reservadas.values()) + [
     'NUMERO', 
     'CADENA',
     'PUNTO',
@@ -47,8 +48,10 @@ tokens = list(keywords.values()) + [
     'MENOR_IGUAL',
 ]
 
+# Ignorar un espacio en blanco.
 t_ignore = ' \t'
 
+# Definición de expresiones regulares para los tokens.
 t_PUNTO = r'\.'
 t_COMILLA = r"'"
 t_COMA = r','
@@ -61,44 +64,45 @@ t_MENOR = r'<'
 t_MAYOR_IGUAL = r'>='
 t_MENOR_IGUAL = r'<='
 
-def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
-    t.lexer.skip(1)
-
-def t_newline(t):
-    r"""\n+"""
-    t.lexer.lineno += len(t.value)
-
 def t_NUMERO(t):
     r'\d+'
-    t.type = keywords.get(t.value, 'NUMERO')
+    t.type = reservadas.get(t.value, 'NUMERO')
     t.value = int(t.value)
     return t
 
 def t_CADENA(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = keywords.get(t.value, 'CADENA')
+    t.type = reservadas.get(t.value, 'CADENA')
     return t
+
+# Función para informar de caracteres ilegales (no definidos previamente).
+def t_error(t):
+    print("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+# Función para ignorar saltos de línea.
+def t_newline(t):
+    r"""\n+"""
+    t.lexer.lineno += len(t.value)
 
 lexer = lex.lex()
 
+# Inicialización diccionarios globales de tablas y columnas utilizadas.
 diccionarioTablas = {}
 diccionarioColumnas = {}
 
+# Definición de la gramática.
 def p_S_consulta_completa(p):
     '''S : SELECT_ FROM_ JOIN_ WHERE_ GROUP_BY ORDER_BY'''
-    
 
 def p_SELECT_(p):
     '''SELECT_ : SELECT CAMPOS
         | SELECT DISTINCT CAMPOS'''
 
-
 def p_CAMPOS(p):
     '''CAMPOS : CAMPO COMA CAMPOS
         | CAMPO'''
     
-
 def p_CAMPO(p):
     '''CAMPO : CADENA PUNTO CADENA AS COMILLA CADENA COMILLA
         | CADENA PUNTO CADENA
@@ -112,8 +116,8 @@ def p_CAMPO(p):
     else:
         if len(p)!=6:
             diccionarioColumnas[llave]=[p[3]]
-    print('p_CAMPO', diccionarioColumnas)
-    
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
+
 def p_FUNC_RESUMEN(p):
     '''FUNC_RESUMEN : MIN PAR_IZQ CADENA PUNTO CADENA PAR_DER
         | MAX PAR_IZQ CADENA PUNTO CADENA PAR_DER
@@ -138,6 +142,7 @@ def p_FUNC_RESUMEN(p):
             diccionarioColumnas[llave]=[p[5]]
         elif len(p)==8:
             diccionarioColumnas[llave]=[p[6]]
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
 
 def p_FROM_(p):
     '''FROM_ : FROM CADENA CADENA
@@ -150,8 +155,7 @@ def p_FROM_(p):
         diccionarioTablas[p[2]]=p[4]
     elif len(p)==3: 
         diccionarioTablas.setdefault(p[2])
-    
-
+    # Guardado de nombres de tablas en el diccionario de tablas, junto con sus alias si tuvieran definido alguno.
 
 def p_JOIN_(p):
     '''JOIN_ : JOIN_INNER_LEFT JOIN_ 
@@ -161,13 +165,18 @@ def p_JOIN_INNER_LEFT(p):
     '''JOIN_INNER_LEFT : INNER JOIN CADENA CADENA ON COND_W
         | INNER JOIN CADENA AS CADENA ON COND_W
         | LEFT JOIN CADENA CADENA ON COND_W
-        | LEFT JOIN CADENA AS CADENA ON COND_W'''
+        | LEFT JOIN CADENA AS CADENA ON COND_W
+        | INNER JOIN CADENA ON COND_W
+        | LEFT JOIN CADENA ON COND_W'''
     llave = p[3]
     if len(p)==7:
         diccionarioTablas[llave]=p[4]
     elif len(p)==8:
         diccionarioTablas[llave]=p[5]
-    
+    elif len(p)==6:
+        diccionarioTablas.setdefault(llave)
+    # Guardado de nombres de tablas en el diccionario de tablas, junto con sus alias si tuvieran definido alguno.
+
 def p_WHERE_(p):
     '''WHERE_ : WHERE COND_W
         | '''
@@ -189,6 +198,7 @@ def p_COND_W(p):
     else:
         if len(p)==5:
             diccionarioColumnas[llave]=[p[3]]
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
 
 def p_SUBCONSULTA(p):
     '''SUBCONSULTA : IN PAR_IZQ S PAR_DER
@@ -225,7 +235,8 @@ def p_CONDICION(p):
                 diccionarioColumnas[llave2].append(campo)
         else:
             diccionarioColumnas[llave2]=[p[7]]
-    
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
+
 def p_NULLEABLE(p):
     '''NULLEABLE :  IS NOT NULL
         |  IS NULL'''
@@ -251,6 +262,7 @@ def p_CAMPOS_G(p):
             diccionarioColumnas[p[1]].append(campo)
     else:
         diccionarioColumnas[p[1]]=[p[3]]
+    # Guardado de campos en el diccionario de columnas, usando como llave el nombre de la tabla o el alias.
 
 def p_HAVING_(p):
     '''HAVING_ : HAVING FUNC_RESUMEN SIGNO VALOR
@@ -269,6 +281,7 @@ def p_ORDEN(p):
         | DESC
         | '''
 
+# Función para informar de errores sintácticos.
 def p_error(p):
     if p:
         print("Syntax error at '%s'" % p.value)
@@ -279,46 +292,29 @@ def p_error(p):
 
 import ply.yacc as yacc
 
+# Definición de función principal (retorna un diccionario de tablas y campos utilizados en la consulta).
 def parse_select_statement(s):
+    # Vaciado de los diccionarios globales.
     diccionarioColumnas.clear()
     diccionarioTablas.clear()
+    contador=0
     yacc.yacc()
     yacc.parse(s)
+    # Inicialización de diccionario que se retorna como resultado (para las tablas y campos usados).
     diccionarioResultado = {}
+    # Bucle para recorrer y guardar las tablas y sus campos.
     for llaveT in diccionarioTablas:
-        # Control para que no guarde los campos de consultas como: 'select personas.nombre from personas as p'
         control=''
         if diccionarioTablas.get(llaveT)!=None:
             control=diccionarioTablas.get(llaveT)
         else:
             control=llaveT
+            # Si la tabla tiene definido un alias, se usa ese alias para matchear; sino se usa el nombre de la tabla.
         for llaveC in diccionarioColumnas:
             if control==llaveC:
                 diccionarioResultado[llaveT]=sorted(diccionarioColumnas.get(llaveC))
+                contador+=1
+    if len(diccionarioColumnas.keys())>contador:
+        raise Exception('Error de cadena inválida: mal uso del alias para una tabla.')
+        # Control para que no se permitan consultas en las que se define un alias que no se use, o que se use un alias no definido.
     return diccionarioResultado
-
-# if __name__ == '__main__':
-#     parser = yacc.yacc()
-#     while True:
-#         try:
-#             s = input('consulta > ')
-#         except EOFError:
-#             break
-#         if not s:
-#             continue
-#         yacc.parse(s)
-
-# ----------------------PRUEBA---------------------------------------------------------------
-
-
-# data = '''
-# SELECT M.cod_multa, M.nombre FROM Multa M WHERE M.monto<>1000 AND M.nombre='Juan'
-# GROUP BY M.cod_multa ORDER BY M.cod_multa ASC
-# '''
-# lexer.input(data)
- 
-# while True:
-#     tok = lexer.token()
-#     if not tok: 
-#         break
-#     print(tok)

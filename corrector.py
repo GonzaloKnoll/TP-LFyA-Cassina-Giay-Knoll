@@ -17,17 +17,23 @@ samples = [
         WHERE c.id = 2''', {'customers': ['first_name', 'id', 'last_name']}),
     ('''SELECT DISTINCT c.first_name,
                         c.last_name,
-                        p.number
+                        phones_numbers.number
         FROM customers AS c
-            LEFT JOIN phones_numbers AS p ON
-                c.id = p.customer_id
+            LEFT JOIN phones_numbers ON
+                c.id = phones_numbers.customer_id
         ''', {'customers': ['first_name', 'id', 'last_name'],
               'phones_numbers': ['customer_id', 'number']}),
-    ('''SELECT V.NROFACTURA, VENTAS.MONTO
+    ('''SELECT V.NROFACTURA, V.MONTO
         FROM VENTAS V
         WHERE V.MARCA_PAGO_CONTADO IS NULL 
         AND V.NROFACTURA NOT IN (SELECT FA.NROFACTURA FROM FACTURAS_ADEUDADAS FA)''',
-		{'VENTAS': ['MARCA_PAGO_CONTADO', 'NROFACTURA'],'FACTURAS_ADEUDADAS': ['NROFACTURA']})
+		{'VENTAS': ['MARCA_PAGO_CONTADO', 'MONTO', 'NROFACTURA'],'FACTURAS_ADEUDADAS': ['NROFACTURA']}),
+    ('''SELECT A.nombre, A.cantidad, COUNT(A.patas) AS 'Cantidad'
+        FROM Animales A INNER JOIN Felinos F ON A.codigo=F.codigo
+        GROUP BY A.nombre, A.cantidad, F.codigo
+        HAVING COUNT(A.patas)>2
+        ORDER BY A.nombre DESC''',
+        {'Animales': ['cantidad', 'codigo', 'nombre', 'patas'],'Felinos': ['codigo']}),
     ]
 
 for ix, sample in enumerate(samples):
